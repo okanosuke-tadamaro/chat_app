@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140427182831) do
     t.integer "user_id"
     t.integer "chatroom_id"
     t.string  "content"
+    t.string  "emotion"
   end
 
 end

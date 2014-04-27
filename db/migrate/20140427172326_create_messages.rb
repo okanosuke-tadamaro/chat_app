@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.references :user
       t.references :chatroom
       t.string :content
+      t.string :emotion
     end
   end
 end
