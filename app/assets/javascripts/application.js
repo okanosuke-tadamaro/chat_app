@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function createChatroom() {
+  $.ajax({
+    url: '/chatrooms/create',
+    method: 'post',
+    data: {
+      name: roomName
+    }
+  })
+}
+
+
+$(document).ready(function() {
+  $('#new-chatroom').click(createChatroom);
+});
