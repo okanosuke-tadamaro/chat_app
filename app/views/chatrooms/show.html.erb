@@ -1,0 +1,12 @@
+<h1><%= @chatroom.name %></h1>
+
+<%= form_for [@chatroom, @chatroom.messages.new] do |f| %>
+  <div class="type-box">
+    <%= f.text_area :content, id: "message_area" %>
+  </div>
+  <%= submit_tag "Send" %>
+<% end %>
+
+<div class="chat-box">
+  <%= render partial: 'message', collection: @chatroom.messages %>
+</div>

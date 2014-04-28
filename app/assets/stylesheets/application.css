@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.chat-box {
+  height: 800px;
+  max-width: 600px;
+  overflow: scroll;
+  border: 2px solid gray;
+}
+
+.message-box {
+  width: 300px;
+  height: 70px;
+  border: 2px dotted blue;
+  color: black;
+  text-align: center;
+}

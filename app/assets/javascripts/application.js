@@ -15,17 +15,26 @@
 //= require turbolinks
 //= require_tree .
 
-function createChatroom() {
-  $.ajax({
-    url: '/chatrooms/create',
-    method: 'post',
-    data: {
-      name: roomName
-    }
-  })
+// function createChatroom() {
+//   var roomName = prompt("What is the name of the chatroom?");
+//   $.ajax({
+//     url: '/chatrooms',
+//     method: 'post',
+//     data: {
+//       name: roomName
+//     },
+//     dataType: 'html'
+//   });
+// }
+
+function createMessage() {
+  var chatBox = $('.chat-box');
+  var newMsg = $('<p>').text($('.type-box').val());
+  });
 }
 
 
 $(document).ready(function() {
-  $('#new-chatroom').click(createChatroom);
+  // $('#new-chatroom').click(createChatroom);
+  $('#send').click(createMessage);
 });

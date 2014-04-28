@@ -1,12 +1,19 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.create(message_params)
+    @chatroom = Chatroom.find params[:chatroom_id]
+    # @message.user = current_user
+    @message = @chatroom.messages.create message_params
+    respond_to do |format|
+      format.html { redirect_to @chatroom }
+      format.js { }
+      format.json { render json: @message.to_json }
+    end
   end
 
   private
   def message_params
-    return params[:message].permit(:content, :emotion)
+    params.require(:message).permit(:content, :created_at, :updated_at, :chatroom_id, :user_id)
   end
 
 end

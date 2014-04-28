@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
     true if session[:oauth_token]
   end
 
+  def current_user
+    return User.find_by(username: session[:username])
+  end
+
 
 end

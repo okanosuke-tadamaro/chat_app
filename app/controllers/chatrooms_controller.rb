@@ -1,8 +1,12 @@
 class ChatroomsController < ApplicationController
 
   def create
-    @chatroom = Chatroom.create(chatroom_params)
-    redirect_to(@chatroom)
+    @chatroom = Chatroom.create(name: params[:name])
+    respond_to do |format|
+      format.html { redirect_to(@chatroom) }
+      format.js { }
+      format.json { render json: @chatroom.to_json }
+    end
   end
 
   def show
