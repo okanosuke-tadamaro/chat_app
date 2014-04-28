@@ -15,16 +15,17 @@
  */
 
 .chat-box {
-  height: 800px;
-  max-width: 600px;
+  height: 400px;
+  width: 400px;
   overflow: scroll;
   border: 2px solid gray;
 }
 
 .message-box {
-  width: 300px;
-  height: 70px;
+  width: 250px;
+  height: 30px;
   border: 2px dotted blue;
   color: black;
-  text-align: center;
+  font-size: 10px;
+  font-family: 'Helvetica';
 }
