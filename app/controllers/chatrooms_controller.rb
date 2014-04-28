@@ -16,11 +16,15 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.create(chatroom_params)
-    redirect_to chatroom_path(@chatroom)
+    redirect_to "/chatrooms/#{@chatroom.name}"
   end
 
   def show
+    if
+     @chatroom = Chatroom.find_by(name: params[:name])
+    else
     @chatroom = Chatroom.find_by(name: params[:search])
+    end
   end
 
   private
