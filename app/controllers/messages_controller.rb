@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def create
     params[:message][:user_id] = current_user.id
     @chatroom = Chatroom.find params[:chatroom_id]
-    @message = @chatroom.messages.create message_params
+    @chatroom.messages.create message_params
     respond_to do |format|
       format.html { redirect_to @chatroom }
       format.js { }

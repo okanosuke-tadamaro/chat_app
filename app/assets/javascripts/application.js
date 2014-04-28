@@ -27,14 +27,6 @@
 //   });
 // }
 
-function createMessage() {
-  var chatBox = $('.chat-box');
-  var newMsg = $('<p>').text($('.type-box').val());
-  });
-}
-
-
 $(document).ready(function() {
-  // $('#new-chatroom').click(createChatroom);
-  $('#send').click(createMessage);
+
 });

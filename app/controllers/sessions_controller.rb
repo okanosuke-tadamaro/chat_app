@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:oauth_token] = nil
+    session[:username] = nil
     redirect_to root_path
   end
 

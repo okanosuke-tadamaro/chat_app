@@ -1,0 +1,5 @@
+var newMsg = $("<%= j(render partial: 'message', collection: @chatroom.messages.order(id: :desc) %>");
+console.log(newMsg);
+
+$('.chat-box').append(newMsg);
+$("input[type='text']").val("");

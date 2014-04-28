@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy"
 
   resources :chatrooms do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:create]
   end
 
 end

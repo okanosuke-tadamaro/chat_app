@@ -1,10 +1,10 @@
 <h1><%= @chatroom.name %></h1>
 
-<%= form_for([@chatroom, @chatroom.messages.new], remote: true) do |f| %>
+<%= form_for([@chatroom, @chatroom.messages.new], remote: false) do |f| %>
   <div class="type-box">
-    <%= f.text_area :content, id: "message_area" %>
+    <%= f.text_field :content, id: "message_area" %>
   </div>
-  <%= submit_tag "Send" %>
+  <%= f.submit "Send", id: "send-button" %>
 <% end %>
 
 <div class="chat-box">
