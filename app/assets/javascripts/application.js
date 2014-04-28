@@ -15,18 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-// function createChatroom() {
-//   var roomName = prompt("What is the name of the chatroom?");
-//   $.ajax({
-//     url: '/chatrooms',
-//     method: 'post',
-//     data: {
-//       name: roomName
-//     },
-//     dataType: 'html'
-//   });
-// }
-
 $(document).ready(function() {
-
+  $('#send-button').click(createMessage);
+  $('#new-chatroom').click(createChatroom);
 });

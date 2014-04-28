@@ -1,12 +1,12 @@
 <h1><%= @chatroom.name %></h1>
 
-<%= form_for([@chatroom, @chatroom.messages.new], remote: false) do |f| %>
-  <div class="type-box">
-    <%= f.text_field :content, id: "message_area" %>
-  </div>
-  <%= f.submit "Send", id: "send-button" %>
-<% end %>
+<textarea type="text_area" id="new-message"></textarea>
+<button id="send-button">Send</button>
 
-<div class="chat-box">
-  <%= render partial: 'message', collection: @chatroom.messages.order(id: :desc) %>
+<div class="chat-box" onload="scrollToBottom()">
+  <% @messages.each do |msg| %>
+    <div class="message-box">
+      <p><%= msg.content %></p>
+    </div>
+  <% end %>
 </div>
