@@ -1,0 +1,9 @@
+<%= form_tag('/chatrooms/:search', :method => "get") do %>
+
+  <div>
+    <%= label_tag(:search) %>
+    <%= text_field_tag :search, params[:search] %>
+  </div>
+
+  <%= submit_tag "search", :name => nil %>
+  <% end %>
