@@ -11,7 +11,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return User.find_by(username: session[:username])
+    if session[:username]
+      begin
+        return User.find_by(username: session[:username])
+      rescue
+        session[:username] = nil
+      end
+    end
   end
 
 
