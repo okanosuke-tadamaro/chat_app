@@ -3,10 +3,11 @@
 <textarea type="text_area" id="new-message"></textarea>
 <button id="send-button">Send</button>
 
-<div class="chat-box" onload="scrollToBottom()">
+<div class="chat-box">
   <% @messages.each do |msg| %>
-    <div class="message-box">
-      <p><%= msg.content %></p>
-    </div>
+   <div id="<%= msg.user.id %>" class="message-box left">
+     <p><%= msg.content %></p>
+   </div>
   <% end %>
 </div>
+

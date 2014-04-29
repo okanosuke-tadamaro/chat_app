@@ -13,6 +13,11 @@ function createMessage() {
   }).done(function(data) {
     var chatBox = $(".chat-box");
     var msgBox = $('<div>').addClass("message-box").hide();
+    if ($('.message-box').length % 2 === 0) {
+      msgBox.addClass("right");
+    } else {
+      msgBox.addClass("left");
+    }
     $('<p>').text(newMsg).appendTo(msgBox);
     chatBox.prepend(msgBox);
     msgBox.slideDown(500);
