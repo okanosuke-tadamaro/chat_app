@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-
+    if signed_in? ? redirect_to "/chatrooms" : redirect_to "/auth/twitter"
   end
 
   def create
@@ -13,12 +13,12 @@ class SessionsController < ApplicationController
     	User.create(username: session[:username], token: session[:oauth_token])
     end
 
-    redirect_to root_url, :notice => "Signed in!"
+    redirect_to register_path, :notice => "Signed in!"
   end
 
   def destroy
-    session[:oauth_token] = nil
     session[:username] = nil
+    session[:oauth_token] = nil
     redirect_to root_path
   end
 

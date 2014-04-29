@@ -9,16 +9,12 @@ class ApplicationController < ActionController::Base
   def signed_in?
     true if session[:oauth_token]
   end
-
+  
   def current_user
-    if session[:username]
-      begin
-        return User.find_by(username: session[:username])
-      rescue
-        session[:username] = nil
-      end
-    end
+  	if signed_in?
+  		User.find_by(username: session[:username])
+  	else
+  		redirect_to root_path
+  	end
   end
-
-
 end
