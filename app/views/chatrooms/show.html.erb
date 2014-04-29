@@ -1,13 +1,20 @@
+<div class="wrap">
 <h1><%= @chatroom.name %></h1>
+
+<% @avatars.each do |emo, img| %>
+  <img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>">
+<% end %>
 
 <textarea type="text_area" id="new-message"></textarea>
 <button id="send-button">Send</button>
 
 <div class="chat-box">
   <% @messages.each do |msg| %>
-    <div class="message-box" id="<%= msg.user.username %>">
+  <div class="message-wrap">
+    <div class="message-box left" id="<%= msg.user.username %>">
       <p><%= msg.content %></p>
     </div>
+  </div>
   <% end %>
 </div>
 
@@ -16,3 +23,4 @@
 <% end %>
 
 <%= link_to "Chatrooms", "/chatrooms" %>
+</div>

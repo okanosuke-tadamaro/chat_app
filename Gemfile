@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'aws-sdk'
+gem 'rest-client'
 
 group :development do
 	gem 'pry'

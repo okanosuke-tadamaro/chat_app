@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-  
+
   def index
     @chatroom = Chatroom.new()
   end
@@ -24,6 +24,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @avatars = User.get_avatars(current_user.username)
     @chatroom = Chatroom.find_by(name: params[:name])
     @messages = @chatroom.messages.order(id: :desc)
   end
