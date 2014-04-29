@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $('#send-button').click(createMessage);
+  $('#new-chatroom').click(createChatroom);
+});

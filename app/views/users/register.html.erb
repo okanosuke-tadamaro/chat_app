@@ -1,0 +1,16 @@
+<h1>Register your avatars!</h1>
+<p id="status"></p>
+<div id="photo-area">
+	<div class="photo-left">
+		<video id="player" autoplay="true"></video>
+		<canvas id="canvas"></canvas>
+	</div>
+	<div class="photo-right">
+
+	</div>
+	<button id="startbutton">Take photo</button>
+</div>
+<div class="clear"></div>
+<%= javascript_tag do %>
+	webCam();
+<% end %>
