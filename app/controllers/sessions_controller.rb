@@ -13,6 +13,12 @@ class SessionsController < ApplicationController
     	User.create(username: session[:username], token: session[:oauth_token])
     end
 
-    redirect_to root_url, :notice => "Signed in!"
+    redirect_to register_path, :notice => "Signed in!"
+  end
+
+  def destroy
+    session[:username] = nil
+    session[:oauth_token] = nil
+    redirect_to root_path
   end
 end

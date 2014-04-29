@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
     true if session[:oauth_token]
   end
   
+  def current_user
+  	if signed_in?
+  		User.find_by(username: session[:username])
+  	else
+  		false
+  	end
+  end
+
 end
