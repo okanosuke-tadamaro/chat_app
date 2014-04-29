@@ -11,9 +11,10 @@ class SessionsController < ApplicationController
 
     if User.exists?(username: session[:username]) == false
     	User.create(username: session[:username], token: session[:oauth_token])
+      redirect_to register_path, :notice => "Signed in!"
+    else
+      redirect_to "/chatrooms"
     end
-
-    redirect_to register_path, :notice => "Signed in!"
   end
 
   def destroy
