@@ -9,9 +9,6 @@ class Chatroom < ActiveRecord::Base
     self.update(name: self.name.gsub(/\s+/,"_"))
     self.update(name: self.name.gsub(",","_"))
     self.update(name: self.name.gsub(/"/,"'"))
-
-
-
   end
 
   def timed_destroy
