@@ -14,13 +14,10 @@ function createMessage() {
       }
     }).done(function(data) {
       var chatBox = $('.chat-box');
-      console.log(data.user);
+      // console.log(data.user);
       var userName = data.user;
       var msgBox = $('<div>').addClass('message-box').hide();
-      msgBox.attr('id', userName);
-      if ($('.message-box').eq(0).attr('id') === userName) {
-        msgBox.addClass('right');
-      }
+      msgBox.attr('id', userName).addClass('right');
       $('<p>').text(newMsg).appendTo(msgBox);
       chatBox.prepend(msgBox);
       msgBox.slideDown(500);
