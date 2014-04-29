@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-
+  
   def index
     @chatroom = Chatroom.new()
   end
@@ -16,18 +16,20 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.create(chatroom_params)
-    redirect_to "/chatrooms/#{@chatroom.name}"
-  end
 
-  def show
-    if
-     @chatroom = Chatroom.find_by(name: params[:name])
-    else
-    @chatroom = Chatroom.find_by(name: params[:search])
+    respond_to do |format|
+      format.html { redirect_to "/chatrooms/#{@chatroom.name}" }
+      format.json { render json: @chatroom.to_json }
     end
   end
 
+  def show
+    @chatroom = Chatroom.find_by(name: params[:name])
+    @messages = @chatroom.messages.order(id: :desc)
+  end
+
   private
+
   def chatroom_params
     return params[:chatroom].permit(:name)
   end

@@ -7,18 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="container">
+  <div id="container">
     <div id="user_nav">
       <% if signed_in? %>
-        Welcome <%= session[:username] %>!
-        <%= link_to "Sign Out", "/signout" %>
+      Welcome <%= session[:username] %>!
+      <%= link_to "Sign Out", "/signout" %>
       <% else %>
-        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+      <%= link_to "Sign in with Twitter", "/auth/twitter" %>
       <% end %>
     </div>
-  <%= yield %>
   </div>
-
+  <%= yield %>
 </body>
 </html>

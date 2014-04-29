@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   root "chatrooms#index"
   get '/auth/:provider/callback' => "sessions#create"
   get "/signout" => "sessions#destroy"
-
-  post '/chatrooms' => 'chatrooms#create'
-
+  post "/chatrooms" => "chatrooms#create"
+  post "/messages" => "messages#create"
   get '/chatrooms/:name' => 'chatrooms#show'
-
 
 end

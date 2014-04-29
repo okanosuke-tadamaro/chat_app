@@ -1,1 +1,12 @@
 <h1><%= @chatroom.name %></h1>
+
+<textarea type="text_area" id="new-message"></textarea>
+<button id="send-button">Send</button>
+
+<div class="chat-box" onload="scrollToBottom()">
+  <% @messages.each do |msg| %>
+    <div class="message-box">
+      <p><%= msg.content %></p>
+    </div>
+  <% end %>
+</div>

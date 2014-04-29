@@ -15,4 +15,11 @@ class SessionsController < ApplicationController
 
     redirect_to root_url, :notice => "Signed in!"
   end
+
+  def destroy
+    session[:oauth_token] = nil
+    session[:username] = nil
+    redirect_to root_path
+  end
+
 end
