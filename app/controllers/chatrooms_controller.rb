@@ -1,4 +1,18 @@
 class ChatroomsController < ApplicationController
+  
+  def index
+    @chatroom = Chatroom.new()
+  end
+
+  def search
+    @chatroom = params[:search]
+    # if params[:search]
+    #   @chatroom = Chatroom.search(params[:search])
+    #   redirect_to chatroom_path(@chatroom)
+    # else
+    #   @chatroom = Chatroom.all.order('created_at DESC')
+    # end
+  end
 
   def index
     @chatroom = Chatroom.new()
