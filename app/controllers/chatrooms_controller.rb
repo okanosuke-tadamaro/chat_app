@@ -29,6 +29,19 @@ class ChatroomsController < ApplicationController
     @messages = @chatroom.messages.order(id: :desc)
   end
 
+  def get_messages
+    @chatroom = Chatroom.find_by(name: params[:name])
+    # @messages = @chatroom.messages.order(id: :desc)
+    time = params[:timestamp].split[4].to_datetime
+    foo = @chatroom.messages.where(["created_at < ?", time])
+
+    return_data = {messages: foo, userName: current_user.username}
+
+    respond_to do |format|
+      format.json { render json: return_data.to_json }
+    end
+  end
+
   private
 
   def chatroom_params

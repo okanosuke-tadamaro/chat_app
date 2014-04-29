@@ -20,7 +20,6 @@
 
 <%= javascript_tag do %>
   msgLayout("<%= j(current_user.username) %>");
+  setInterval(grabMessages, 5000);
 <% end %>
-
-<%= link_to "Chatrooms", "/chatrooms" %>
 </div>
