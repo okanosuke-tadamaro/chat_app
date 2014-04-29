@@ -5,14 +5,14 @@
 
 <div class="chat-box">
   <% @messages.each do |msg| %>
-    <div class="message-box">
+    <div class="message-box" id="<%= msg.user.username %>">
       <p><%= msg.content %></p>
     </div>
   <% end %>
 </div>
 
 <%= javascript_tag do %>
-  msgLayout();
+  msgLayout("<%= j(current_user.username) %>");
 <% end %>
 
 <%= link_to "Chatrooms", "/chatrooms" %>

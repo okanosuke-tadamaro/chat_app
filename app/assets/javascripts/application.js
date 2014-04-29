@@ -17,5 +17,4 @@
 
 $(document).ready(function() {
   $('#send-button').click(createMessage);
-  $('#new-chatroom').click(createChatroom);
 });
