@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
-  validates :username, :token, presence: true, uniqueness: true
+  validates_presence_of :username, :token
+  validates_uniqueness_of :username, :token
 
 end

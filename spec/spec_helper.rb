@@ -2,8 +2,13 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'shoulda/matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
+
+def login_with_oauth(service = :twitter)
+   visit "/auth/#{service}"
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -41,3 +46,14 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+Capybara.default_host = 'http://127.0.0.1:3000'
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = {
+    :uid => '1337',
+    :provider => 'twitter',
+    :info => {
+      'name' => 'JonnieHallman'
+    }
+  }
