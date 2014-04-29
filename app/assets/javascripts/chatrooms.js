@@ -20,11 +20,11 @@ function grabMessages() {
       timestamp: (new Date($.now()))
     }
   }).done(function(data) {
-    console.log(data.messages.length);
-    // var msg = $('.message-box');
-    // for (var i = 0; i < msg.length; i++) {
-    //   var newDiv = $('<div>').addClass('message-box').addClass('left').atrr('id', data.userName);
-    //   $('<p>').text(data.messages[i].content).appendTo(newDiv);
+    console.log(data);
+    // var msgs = data.messages;
+    // var userMsgCount = {};
+    // for (var i = 0; i < msgs.length; i++) {
+    //   if (userMsgCount.msgs[i].)
     // }
   });
 }
