@@ -8,7 +8,17 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="container">
+    <div id="user_nav">
+      <% if signed_in? %>
+        Welcome <%= session[:username] %>!
+        <%= link_to "Sign Out", "/signout" %>
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+      <% end %>
+    </div>
+  <%= yield %>
+  </div>
 
 </body>
 </html>

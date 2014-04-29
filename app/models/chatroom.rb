@@ -8,4 +8,10 @@ class Chatroom < ActiveRecord::Base
     end
   end
 
+  def self.search(query)
+    where("name like ?", "%#{query}%")
+    # search_condition = "%" + search + "%"
+    # find(:all, :conditions => ['name LIKE ?', search_condition])
+  end
+
 end

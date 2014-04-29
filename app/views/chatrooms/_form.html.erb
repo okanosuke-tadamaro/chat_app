@@ -1,0 +1,10 @@
+<%= form_for(@chatroom) do |f| %>
+
+  <div>
+    <%= f.label(:name) %>
+    <%= f.text_field(:name) %>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>
