@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-    if signed_in? ? redirect_to "/chatrooms" : redirect_to "/auth/twitter"
+    redirect_to "/chatrooms" if signed_in?
   end
 
   def create

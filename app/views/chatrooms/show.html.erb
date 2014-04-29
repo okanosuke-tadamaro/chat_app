@@ -4,19 +4,15 @@
 <button id="send-button">Send</button>
 
 <div class="chat-box">
-  <% for i in (0..@messages.length) %>
-    <% if @messages[i].user_id == @messages[i-1].user_id %>
-     <div class="message-box left">
-       <p><%= @messages[i].content %></p>
-     </div>
-    <% else %>
-    <div class="message-box right">
-       <p><%= @messages[i].content %></p>
-     </div>
-    <% end %>
+  <% @messages.each do |msg| %>
+    <div class="message-box">
+      <p><%= msg.content %></p>
+    </div>
   <% end %>
 </div>
 
 <%= javascript_tag do %>
   msgLayout();
 <% end %>
+
+<%= link_to "Chatrooms", "/chatrooms" %>
