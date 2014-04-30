@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	before_action :current_user, only: [:create_avatar]
+
 	def register
 
 	end

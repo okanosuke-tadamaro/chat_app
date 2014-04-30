@@ -1,2 +1,10 @@
-<h1>Sessions#index</h1>
-<p>Find me in app/views/sessions/index.html.erb</p>
+<h1>Welcome to Chat.ly</h1>
+
+<% if signed_in? %>
+  <li><%= link_to "Star Chatting!", chatrooms_path %></li>
+<% else %>
+  <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+  <li><%= link_to "Join Chat.ly via Twitter", "/auth/twitter" %></li>
+<% end %>
+
+<img src="http://placepuppy.it/800/600" alt="">

@@ -1,6 +1,32 @@
-<div class="chat-index">
-	<h1>Create Or Enter A Chatroom</h1>
-	<%= render "form" %>
-	<p>OR</p>
-	<%= render "search" %>
+<h1>Current Avatars for <%= current_user.username %></h1>
+
+<div class="avatar_box">
+  <% @avatars.each do |emo, img| %>
+    <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+  <% end %>
 </div>
+
+<%= button_to "Retake Avatars", register_path, :id => "retake_avatars_button", :method => :get %>
+
+<div class="recent_rooms">
+  <h3>Recent Rooms</h3>
+  <ul class="room_list">
+    <% @recent_rooms.each do |room_name, time_left| %>
+      <div class="rooms">
+        <li class="room_list_text"><%= link_to "#{room_name} - #{time_left}", "/chatrooms/#{room_name}" %></li>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
+<div class="chat-index">
+  <h1>Create Or Enter A Chatroom</h1>
+  <%= render "form" %>
+  <p>OR</p>
+  <%= render "search" %>
+</div>
+
+
+<%= javascript_tag do %>
+  setInterval(recentRoomTimes, 30000);
+<% end %>

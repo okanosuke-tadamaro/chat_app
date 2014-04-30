@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-    redirect_to "/chatrooms" if signed_in?
+    # redirect_to "/chatrooms" if signed_in?
   end
 
   def create
@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
 
     if User.exists?(username: session[:username]) == false
     	User.create(username: session[:username], token: session[:oauth_token])
-      redirect_to register_path, :notice => "Signed in!"
+      redirect_to register_path, :notice => "Welcome to Chat.ly!"
     else
-      redirect_to "/chatrooms"
+      redirect_to chatrooms_path
     end
   end
 
