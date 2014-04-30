@@ -19,7 +19,6 @@ function grabMessages() {
       timestamp: $.now()
     }
   }).done(function(data) {
-    console.log(data.ranking_data);
     var newMsgs = data.newMsgs;
     var chatBox = $('.chat-box');
     for (var i = 0; i < newMsgs.length; i++) {
