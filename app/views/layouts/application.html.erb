@@ -7,16 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container">
-    <div id="user_nav">
-      <% if signed_in? %>
-      Welcome <%= session[:username] %>!
-      <%= link_to "Sign Out", "/signout" %>
-      <% else %>
-      <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-      <% end %>
+  <div class="fixed_header">
+    <div class="header_content">
+      <div class="logo">
+        <h1>Chat_app</h1>
+      </div>
+      <ul class="nav">
+        <% if signed_in? %>
+          <li>Welcome <%= session[:username] %>! <%= link_to "Sign Out", "/signout" %></li>
+        <% else %>
+          <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <%= yield %>
+  
+  <div class="wrap">
+    <%= yield %>
+  </div>
 </body>
 </html>

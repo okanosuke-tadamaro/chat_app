@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatroom = Chatroom.new()
+    @chatroom = Chatroom.new
   end
 
   def search
