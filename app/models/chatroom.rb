@@ -16,5 +16,4 @@ class Chatroom < ActiveRecord::Base
       self.destroy
     end
   end
-
 end
