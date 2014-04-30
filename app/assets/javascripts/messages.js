@@ -1,7 +1,7 @@
 function createMessage() {
   $('#new-message').focus();
   var newMsg = $('#new-message').val();
-  var roomName = window.location.pathname.split("/")[2];
+  var roomName = $('.room-name').text();
 
   if (newMsg !== "") {
     $.ajax({

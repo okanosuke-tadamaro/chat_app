@@ -14,20 +14,6 @@ class ChatroomsController < ApplicationController
     # end
   end
 
-  def index
-    @chatroom = Chatroom.new()
-  end
-
-  def search
-    @chatroom = params[:search]
-    # if params[:search]
-    #   @chatroom = Chatroom.search(params[:search])
-    #   redirect_to chatroom_path(@chatroom)
-    # else
-    #   @chatroom = Chatroom.all.order('created_at DESC')
-    # end
-  end
-
   def create
     @chatroom = Chatroom.create(chatroom_params)
 
@@ -40,25 +26,33 @@ class ChatroomsController < ApplicationController
   def show
     @avatars = User.get_avatars(current_user.username)
     @chatroom = Chatroom.find_by(name: params[:name])
-    @messages = @chatroom.messages.order(id: :desc)
+    @messages = @chatroom.messages.order(created_at: :desc)
   end
 
   def get_messages
-    @chatroom = Chatroom.find_by(name: params[:name])
-    @messages = @chatroom.messages.order(id: :desc)
-
+    chatroom = Chatroom.find_by(name: params[:name])
+    messages = chatroom.messages.order(created_at: :desc)
 
     users = []
-    @messages.each { |msg| users << msg.user.username }
+    messages.each { |msg| users << msg.user.username }
     users = users.uniq
     user_msg_count = users.map do |usr|
-      User.find_by(username: usr).messages.where(chatroom_id: @chatroom.id).size
+      User.find_by(username: usr).messages.where(chatroom_id: chatroom.id).size
     end
     ranking_data = users.zip(user_msg_count)
-    # time = params[:timestamp].split[4].to_datetime
-    # foo = @chatroom.messages.where(["created_at < ?", time])
 
-    return_data = {messages: @messages, userName: current_user.username, ranking_data: ranking_data }
+    new_msgs = []
+    messages.each do |msg|
+      if msg.created_at.to_i > (params[:timestamp].to_i / 1000 - 5)
+        new_msgs << msg
+      end
+    end
+
+    return_data = {
+      messages: messages,
+      userName: current_user.username,
+      ranking_data: ranking_data,
+      newMsgs: new_msgs }
 
     respond_to do |format|
       format.json { render json: return_data.to_json }

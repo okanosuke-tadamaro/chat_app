@@ -9,17 +9,16 @@ function msgLayout(currentUser) {
 }
 
 function grabMessages() {
-  var roomName = window.location.pathname.split("/")[2];
-  var lastMessage = $('.message-box').eq(0).text();
+  var roomName = $('.room-name').text();
   $.ajax({
     url: '/get_messages',
     method: 'get',
     dataType: 'json',
     data: {
       name: roomName,
-      timestamp: (new Date($.now()))
+      timestamp: $.now()
     }
   }).done(function(data) {
-    console.log(data.ranking_data);
+    console.log(data.newMsgs.length);
   });
 }

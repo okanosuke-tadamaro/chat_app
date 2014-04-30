@@ -1,5 +1,5 @@
 <div class="wrap">
-<h1><%= @chatroom.name %></h1>
+<h1 class="room-name"><%= @chatroom.name %></h1>
 
 <% @avatars.each do |emo, img| %>
   <img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>">
