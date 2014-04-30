@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     result = {}
     emotions = ["happy", "sad", "mad", "surprised", "rofl", "confused"]
     aws = User.new_aws_request
-    bucket = aws.buckets['s3-sample-pt']
+    bucket = aws.buckets[ENV['S3_BUCKET_NAME']]
 
     emotions.each { |emotion| result[emotion] = bucket.objects["#{username}_#{emotion}.png"] }
     return result
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def get_avatar(emotion)
     aws = User.new_aws_request
-    bucket = aws.buckets['s3-sample-pt']
+    bucket = aws.buckets[ENV['S3_BUCKET_NAME']]
     return bucket.objects["#{self.username}_#{emotion}.png"]
   end
 
