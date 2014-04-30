@@ -16,9 +16,11 @@ gem 'aws-sdk'
 gem 'rest-client'
 
 group :development do
-	gem 'pry'
-	gem 'dotenv-rails'
+  gem 'pry'
+  gem 'dotenv-rails'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
@@ -28,5 +30,5 @@ group :development, :test do
 end
 
 group :production do
-	gem 'rails_12factor'
+  gem 'rails_12factor'
 end

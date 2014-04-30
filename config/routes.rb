@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/messages" => "messages#index"
   get "/chatrooms" => "chatrooms#index"
   get "/get_messages" => "chatrooms#get_messages"
+  get "/chatrooms/search" => "chatrooms#show"
   get "/chatrooms/:name" => "chatrooms#show"
   get "/register" => "users#register"
 
