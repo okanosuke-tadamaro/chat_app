@@ -12,9 +12,9 @@ function createMessage() {
         content: newMsg,
         room_name: roomName,
       }
-    }).done(function(data) {
+    }).done(function(data) {      
+      console.log(data);
       var chatBox = $('.chat-box');
-      // console.log(data.user);
       var userName = data.user;
       var msgBox = $('<div>').addClass('message-box').hide();
       msgBox.attr('id', userName).addClass('right');
