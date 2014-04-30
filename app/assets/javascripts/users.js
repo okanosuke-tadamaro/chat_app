@@ -4,8 +4,8 @@ function webCam() {
 		var mediaOptions = { audio: false, video: true };
 		var video = document.querySelector("#player");
 		var canvas = document.querySelector("#canvas");
-		var width = 300;
-		var height = 200;
+		var width = 171;
+		var height = 128;
 		var data;
 
 		if (!navigator.getUserMedia) {
@@ -68,6 +68,7 @@ function webCam() {
       video.setAttribute('height', height);
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
+
 	    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 	    data = canvas.toDataURL('image/png');
 		}
