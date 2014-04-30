@@ -8,6 +8,26 @@ function msgLayout(currentUser) {
   }
 }
 
+function addMessage(data) {
+  console.log(data);
+  var newMsgs = data.newMsgs;
+  var chatBox = $('.chat-box');
+  for (var i = 0; i < newMsgs.length; i++) {
+    var msgBox = $('<div>').addClass('message-box').hide();
+    var avatar = $('<img>').attr('src', newMsgs[i].avt);
+    var avatarBox = $('<div>').addClass('message-avatar').addClass('avatar').append(avatar);
+    var arrowBox = $('<div>').addClass('arrow_box');
+    var messageContent = $('<div>').addClass('message-content');
+
+    msgBox.attr('id', data.user).addClass('left');
+    arrowBox.text(newMsgs[i].message.content).appendTo(messageContent);
+    msgBox.append(avatarBox);
+    msgBox.append(messageContent);
+    chatBox.prepend(msgBox);
+    msgBox.slideDown(200);
+  }
+}
+
 function ranking(data) {
 
 }
@@ -23,15 +43,7 @@ function grabMessages() {
       timestamp: $.now()
     }
   }).done(function(data) {
-    var newMsgs = data.newMsgs;
-    var chatBox = $('.chat-box');
-    for (var i = 0; i < newMsgs.length; i++) {
-      var msgBox = $('<div>').addClass('message-box').hide();
-      msgBox.attr('id', data.user).addClass('left');
-      $('<p>').text(newMsgs[i].content).appendTo(msgBox);
-      chatBox.prepend(msgBox);
-      msgBox.slideDown(400);
-    }
+    addMessage(data);
     ranking(data);
   });
 }

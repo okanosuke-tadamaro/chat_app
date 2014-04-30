@@ -13,8 +13,15 @@ class User < ActiveRecord::Base
     emotions = ["happy", "sad", "mad", "surprised", "rofl", "confused"]
     aws = User.new_aws_request
     bucket = aws.buckets['s3-sample-pt']
+
     emotions.each { |emotion| result[emotion] = bucket.objects["#{username}_#{emotion}.png"] }
     return result
+  end
+
+  def get_avatar(emotion)
+    aws = User.new_aws_request
+    bucket = aws.buckets['s3-sample-pt']
+    return bucket.objects["#{self.username}_#{emotion}.png"]
   end
 
 end

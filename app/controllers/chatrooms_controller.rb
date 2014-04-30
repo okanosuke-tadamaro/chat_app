@@ -44,12 +44,11 @@ class ChatroomsController < ApplicationController
     new_msgs = []
     messages.each do |msg|
       if msg.created_at.to_i >= (params[:timestamp].to_i / 1000 - 3) && msg.user.username != current_user.username
-        new_msgs << msg
+        new_msgs << { message: msg, avt: msg.user.get_avatar(msg.emotion).read }
       end
     end
 
     return_data = {
-      messages: messages,
       user: current_user.username,
       ranking_data: ranking_data,
       newMsgs: new_msgs

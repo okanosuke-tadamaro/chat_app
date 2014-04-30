@@ -15,10 +15,17 @@ function createMessage() {
     }).done(function(data) {
       console.log(data);
       var chatBox = $('.chat-box');
-      var user = data.user;
       var msgBox = $('<div>').addClass('message-box').hide();
+      var user = data.user;
+      var avatarBox = $('<div>').addClass('message-avatar').addClass('avatar');
+      var avatarImage = $('#' + user + '_' + data.obj.emotion).clone();
+      avatarImage.appendTo(avatarBox);
+      avatarBox.appendTo(msgBox);
       msgBox.attr('id', user).addClass('right');
-      $('<p>').text(newMsg).appendTo(msgBox);
+      var messageContent = $('<div>').addClass('message-content');
+      var arrowBox = $('<div>').addClass('arrow_box');
+      arrowBox.text(data.obj.content).appendTo(messageContent);
+      messageContent.appendTo(msgBox);
       chatBox.prepend(msgBox);
       msgBox.slideDown(400);
       $('textarea').val("");

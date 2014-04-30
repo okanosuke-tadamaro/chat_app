@@ -1,11 +1,5 @@
-.clear {
-  clear:both;
-}
-
-.wrap {
-  width: 980px;
-  margin: 0 auto;
-}
+.clear { clear:both; }
+.wrap { width: 980px; margin: 0 auto; }
 
 .chat-box {
   height: 400px;
@@ -13,41 +7,94 @@
   background-color: white;
   padding: 20px;
   overflow: scroll;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3) inset;
 }
 
-.message-box {
-  width: 600px;
+.message-box { 
   margin: 10px 0 10px 0;
-  font-size: 14px;
-  border: solid 1px lightgray;
-  font-family: 'Helvetica';
-  p {
-    margin: 0;
-    padding: 10px 5px 10px 5px;
-  }
+  .message-avatar { width: 86px; }
+  .message-content { min-width: 500px; max-width: 700px; border: solid 1px lightgray; position: relative; }
 }
 
 .left {
   float: left;
-  text-align: left;
-  background-color: lightgray;
+  .message-avatar { float: left; margin-right: 20px; }
+  .message-content {
+    float: left;
+  }
+  .arrow_box {
+    position: relative;
+    min-height: 60px;
+    min-width: 150px;
+    padding: 10px;
+    background: #88b7d5;
+    border: 1px solid lightgray;
+  }
+  .arrow_box:after, .arrow_box:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-right-color: #88b7d5;
+    border-width: 20px;
+    margin-top: -20px;
+  }
+  .arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-right-color: #c2e1f5;
+    border-width: 21px;
+    margin-top: -21px;
+  }
 }
-.right {
-  float: right;
-  text-align: right;
-  background-color: rgba(0, 90, 230, 0.3);
-}
-
-.avatar_box {
-  background-color: lightgray;
-  height: 134px;
+  
+.right { float: right; text-align: right;
+  .message-avatar { float: right; margin-left: 20px; }
+  .message-content {
+    float: right;
+  }
+  .arrow_box {
+    position: relative;
+    min-height: 60px;
+    min-width: 150px;
+    padding: 10px;
+    background: #d0d584;
+    border: 1px solid #f7f7f7;
+  }
+  .arrow_box:after, .arrow_box:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .arrow_box:after {
+    border-color: rgba(208, 213, 132, 0);
+    border-left-color: #d0d584;
+    border-width: 20px;
+    margin-top: -20px;
+  }
+  .arrow_box:before {
+    border-color: rgba(247, 247, 247, 0);
+    border-left-color: #f7f7f7;
+    border-width: 21px;
+    margin-top: -21px;
+  }
 }
 
 .avatar {
   display: inline-block;
-  width: 128px;
-  height: 128px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border: solid 3px white;
   border-radius: 50%;
@@ -55,6 +102,7 @@
   img {
     margin: 0;
     position: relative;
-    left: -23px;
+    height: 80px;
+    left: -13px;
   }
 }
