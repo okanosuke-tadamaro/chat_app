@@ -8,6 +8,10 @@ function msgLayout(currentUser) {
   }
 }
 
+function ranking(data) {
+
+}
+
 function grabMessages() {
   var roomName = $('.room-name').text();
   $.ajax({
@@ -28,5 +32,6 @@ function grabMessages() {
       chatBox.prepend(msgBox);
       msgBox.slideDown(400);
     }
+    ranking(data);
   });
 }
