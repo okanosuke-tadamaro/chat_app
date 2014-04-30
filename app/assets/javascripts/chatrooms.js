@@ -20,6 +20,7 @@ function grabMessages() {
       timestamp: (new Date($.now()))
     }
   }).done(function(data) {
-    console.log(data.ranking_data);
+    console.log(data.ranking_data[0][0]);
+    console.log(data.ranking_data[0][1]);
   });
 }
