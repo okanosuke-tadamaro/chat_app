@@ -43,7 +43,7 @@ class ChatroomsController < ApplicationController
 
     new_msgs = []
     messages.each do |msg|
-      if msg.created_at.to_i > (params[:timestamp].to_i / 1000 - 5) && msg.user.username != current_user.username
+      if (msg.created_at.to_i * 1000 + 5000) > params[:timestamp].to_i && msg.user.username != current_user.username
         new_msgs << msg
       end
     end

@@ -10,7 +10,7 @@ body {
 .chat-box {
   height: 400px;
   width: 100%;
-  background-color: white;
+  background-color: lightgray;
   padding: 20px;
   overflow: scroll;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
@@ -31,8 +31,10 @@ body {
 .left {
   float: left;
   text-align: left;
+  background-color: white;
 }
 .right {
   float: right;
   text-align: right;
+  background-color: rgba(0, 90, 230, 0.3);
 }
