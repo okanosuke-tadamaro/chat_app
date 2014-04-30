@@ -33,10 +33,13 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find_by(name: params[:name])
     @messages = @chatroom.messages.order(id: :desc)
 
+
     users = []
     @messages.each { |msg| users << msg.user.username }
     users = users.uniq
-    user_msg_count = users.map { |usr| usr.messages.where(chatroom_id: @chatroom.id).size }
+    user_msg_count = users.map do |usr|
+      User.find_by(username: usr).messages.where(chatroom_id: @chatroom.id).size
+    end
     ranking_data = users.zip(user_msg_count)
     # time = params[:timestamp].split[4].to_datetime
     # foo = @chatroom.messages.where(["created_at < ?", time])

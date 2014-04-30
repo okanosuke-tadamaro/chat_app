@@ -20,11 +20,6 @@ function grabMessages() {
       timestamp: (new Date($.now()))
     }
   }).done(function(data) {
-    console.log(data);
-    // var msgs = data.messages;
-    // var userMsgCount = {};
-    // for (var i = 0; i < msgs.length; i++) {
-    //   if (userMsgCount.msgs[i].)
-    // }
+    console.log(data.ranking_data);
   });
 }
