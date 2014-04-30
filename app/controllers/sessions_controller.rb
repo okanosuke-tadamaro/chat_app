@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def index
     # redirect_to "/chatrooms" if signed_in?
   end
-
+  #Logging in via Twitter Oauth
   def create
   	auth = request.env["omniauth.auth"]
     session[:oauth_token] = auth.credentials.token
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     	User.create(username: session[:username], token: session[:oauth_token])
       redirect_to register_path, :notice => "Welcome to Chat.ly!"
     else
-      redirect_to chatrooms_path
+      redirect_to chatrooms_path, :notice => "Welcome back #{session[:username]}!"
     end
   end
 

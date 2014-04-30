@@ -1,5 +1,5 @@
-<h1>Current Avatars for <%= current_user.username %></h1>
-
+<h1><%= current_user.username %></h1>
+<h4 class="notice"><%= flash[:notice] %></h4>
 <div class="avatar_box">
   <% @avatars.each do |emo, img| %>
     <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
@@ -20,13 +20,12 @@
 </div>
 
 <div class="chat-index">
-  <h1>Create Or Enter A Chatroom</h1>
+  <h3>Create Chatroom</h3>
   <%= render "form" %>
-  <p>OR</p>
+  <h3>Search Chatroom</h3>
   <%= render "search" %>
 </div>
 
-
 <%= javascript_tag do %>
-  setInterval(recentRoomTimes, 30000);
+  setInterval(recentRoomTimes, 45000);
 <% end %>

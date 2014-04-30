@@ -4,6 +4,7 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatroom = Chatroom.new
+    #AJAX request for rooms participated in
     rooms_ids = current_user.messages.pluck(:chatroom_id).uniq
     rooms = rooms_ids.map { |id| Chatroom.find(id) }
     @recent_rooms = {}
@@ -14,7 +15,7 @@ class ChatroomsController < ApplicationController
       new_array = []
       new_array.push(room_name, time_left)
     end
-
+    #Grabbing current user's Avatars from S3
     @avatars = User.get_avatars(current_user.username)
 
     respond_to do |format|
@@ -24,21 +25,21 @@ class ChatroomsController < ApplicationController
   end
 
   def search
-    @chatroom = params[:search]
-    # if params[:search]
-    #   @chatroom = Chatroom.search(params[:search])
-    #   redirect_to chatroom_path(@chatroom)
-    # else
-    #   @chatroom = Chatroom.all.order('created_at DESC')
-    # end
+    room_name = params[:search].gsub(/\s+/,"_").gsub(",","_").gsub(/"/,"'")
+    @chatroom = Chatroom.find_by(name: room_name)
+    if @chatroom
+      redirect_to "/chatrooms/#{@chatroom.name}"
+    else
+      redirect_to chatrooms_path, notice: "Room: '#{params[:search]}' doesn't seem to exist - try creating it!"
+    end
   end
 
   def create
     @chatroom = Chatroom.create(chatroom_params)
-
-    respond_to do |format|
-      format.html { redirect_to "/chatrooms/#{@chatroom.name}" }
-      format.json { render json: @chatroom.to_json }
+    if @chatroom.save
+      redirect_to "/chatrooms/#{@chatroom.name}"
+    else
+      redirect_to chatrooms_path, notice: "Room: '#{@chatroom.name}' already exists - try searching for it!"
     end
   end
 
@@ -51,7 +52,7 @@ class ChatroomsController < ApplicationController
   def get_messages
     chatroom = Chatroom.find_by(name: params[:name])
     messages = chatroom.messages.order(created_at: :desc)
-
+    #AJAX request for user message ranking system in a chatroom
     users = []
     messages.each { |msg| users << msg.user.username }
     users = users.uniq
@@ -59,14 +60,14 @@ class ChatroomsController < ApplicationController
       User.find_by(username: usr).messages.where(chatroom_id: chatroom.id).size
     end
     ranking_data = users.zip(user_msg_count)
-
+    #AJAX request for new messages in chatroom - need to fix by ID instead of time value
     new_msgs = []
     messages.each do |msg|
       if msg.created_at.to_i >= (params[:timestamp].to_i / 1000 - 3) && msg.user.username != current_user.username
         new_msgs << msg
       end
     end
-
+    #Returned AJAX object
     return_data = {
       messages: messages,
       user: current_user.username,
