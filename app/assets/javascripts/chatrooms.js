@@ -19,6 +19,14 @@ function grabMessages() {
       timestamp: $.now()
     }
   }).done(function(data) {
-    console.log(data.newMsgs.length);
+    var newMsgs = data.newMsgs;
+    var chatBox = $('.chat-box');
+    for (var i = 0; i < newMsgs.length; i++) {
+      var msgBox = $('<div>').addClass('message-box').hide();
+      msgBox.attr('id', data.user).addClass('left');
+      $('<p>').text(newMsgs[i].content).appendTo(msgBox);
+      chatBox.prepend(msgBox);
+      msgBox.slideDown(400);
+    }
   });
 }

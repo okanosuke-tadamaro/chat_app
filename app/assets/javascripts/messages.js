@@ -14,13 +14,12 @@ function createMessage() {
       }
     }).done(function(data) {
       var chatBox = $('.chat-box');
-      // console.log(data.user);
-      var userName = data.user;
+      var user = data.user;
       var msgBox = $('<div>').addClass('message-box').hide();
-      msgBox.attr('id', userName).addClass('right');
+      msgBox.attr('id', user).addClass('right');
       $('<p>').text(newMsg).appendTo(msgBox);
       chatBox.prepend(msgBox);
-      msgBox.slideDown(500);
+      msgBox.slideDown(400);
       $('textarea').val("");
     });
   }

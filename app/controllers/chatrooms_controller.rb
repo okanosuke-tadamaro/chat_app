@@ -43,16 +43,17 @@ class ChatroomsController < ApplicationController
 
     new_msgs = []
     messages.each do |msg|
-      if msg.created_at.to_i > (params[:timestamp].to_i / 1000 - 5)
+      if msg.created_at.to_i > (params[:timestamp].to_i / 1000 - 5) && msg.user.username != current_user.username
         new_msgs << msg
       end
     end
 
     return_data = {
       messages: messages,
-      userName: current_user.username,
+      user: current_user.username,
       ranking_data: ranking_data,
-      newMsgs: new_msgs }
+      newMsgs: new_msgs
+    }
 
     respond_to do |format|
       format.json { render json: return_data.to_json }
