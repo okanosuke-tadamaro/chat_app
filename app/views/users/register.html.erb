@@ -1,20 +1,17 @@
 <h1>Register your Avatars!</h1>
 <h4 class="notice"><%= flash[:notice] %></h4>
-<p id="status"></p>
 <div id="photo-area">
 	<div class="photo-left">
 		<video id="player" autoplay="true"></video>
 		<canvas id="canvas"></canvas>
 	</div>
 	<div class="photo-right">
-    <%= image_tag 'happy_placeholder.png', class: "placeholders" %>
-    <%= image_tag 'sad_placeholder.png', class: "placeholders" %>
-    <%= image_tag 'mad_placeholder.png', class: "placeholders" %>
-    <%= image_tag 'surprised_placeholder.png', class: "placeholders" %>
-    <%= image_tag 'rofl_placeholder.png', class: "placeholders" %>
-    <%= image_tag 'confused_placeholder.png', class: "placeholders" %>
+    
 	</div>
-	<button id="startbutton">Take photo</button>
+</div>
+<div class="buttons">
+<p id="status"></p>
+<button id="startbutton">Take photo</button>
 </div>
 <div class="clear"></div>
 <%= javascript_tag do %>

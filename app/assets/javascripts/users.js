@@ -60,7 +60,7 @@ function webCam() {
 			var confirmButton = document.createElement('button');
 	    confirmButton.id = "confirm-button";
 	    confirmButton.innerHTML = "Confirm";
-	    document.querySelector('#photo-area').appendChild(confirmButton);
+	    document.querySelector('.buttons').appendChild(confirmButton);
 	    confirmButton.addEventListener('click', createPhoto);
 
 			height = video.videoHeight / (video.videoWidth/width);

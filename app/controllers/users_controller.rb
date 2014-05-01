@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	
 	#Photo taking
 	def register
-		flash[:notice] = "Get ready to take your avatar photos!"
+		flash[:notice] = "Get ready to take your avatar photos! Make sure to allow access to your webcam!"
 	end
 	
 	#creating avatars and storing directly into AWS S3
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 		data = params[:file]
 		file_name = "#{current_user.username}_#{params[:emotion]}.png"
 		bucket.objects.create(file_name, data)
-		p 
 		return_data = {file: data, emotion: params[:emotion]}
 
 		respond_to do |format|
