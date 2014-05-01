@@ -1,12 +1,10 @@
 <div class="left_col">
-  <h3 class="room-name"><%= @chatroom.name %></h3>
+  <h1 class="room-name"><%= @chatroom.name %></h1>
 
   <div class="avatar_box">
     <% @avatars.each do |emo, img| %>
-      <div class="avatar-label">
-        <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
-        <div class="label">#<%= emo %></div>
-      </div>
+      <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+      <div class="label"></div>
     <% end %>
   </div>
 
@@ -31,7 +29,6 @@
 
 </div>
 <div class="right_col">
-  <h3>Top Contributors</h3>
   <div class="ranked_users" id="ranking_box">
   </div>
 </div>
@@ -39,6 +36,6 @@
 
 <%= javascript_tag do %>
   msgLayout("<%= j(current_user.username) %>");
-  setInterval(grabMessages, 1000);
+  setInterval(grabMessages, 3000);
 <% end %>
 
