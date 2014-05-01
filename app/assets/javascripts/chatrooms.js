@@ -5,11 +5,11 @@ function msgLayout(currentUser) {
     if (msg.eq(i).attr('id') == currentUser) {
       msg.eq(i).removeClass('left');
       msg.eq(i).addClass('right');
-      if (box.eq(i).text().indexOf("http") >= 0) {
-        var msgText = msg.eq(i).text();
-        box.eq(i).text("");
-        box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
-      }
+    }
+    if (box.eq(i).text().indexOf("http") >= 0) {
+      var msgText = msg.eq(i).text();
+      box.eq(i).text("");
+      box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
     }
   }
 }
