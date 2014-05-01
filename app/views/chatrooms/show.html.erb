@@ -22,7 +22,7 @@
         <img src='<%= msg.user.get_avatar(msg.emotion).read %>'>
       </div>
       <div class="message-content">
-        <div class="arrow_box"><%= msg.content.html_safe %></div>
+        <div class="arrow_box"><%= msg.content %></div>
       </div>
     </div>
     <div class="clear"></div>
@@ -39,6 +39,6 @@
 
 <%= javascript_tag do %>
   msgLayout("<%= j(current_user.username) %>");
-  setInterval(grabMessages, 3000);
+  setInterval(grabMessages, 1000);
 <% end %>
 
