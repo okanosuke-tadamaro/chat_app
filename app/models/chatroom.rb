@@ -12,8 +12,10 @@ class Chatroom < ActiveRecord::Base
   end
   #Destroys chatrooms and all their messages
   def timed_destroy
-    if (24 - (Time.now.hour + 4 - self.created_at.hour).abs) < 0
+    if (Time.now.getgm - self.created_at.getgm) >= 86400
       self.destroy
     end
   end
+
 end
+
