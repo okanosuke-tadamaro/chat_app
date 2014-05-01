@@ -27,7 +27,7 @@ function createMessage() {
       messageContent.appendTo(msgBox);
       chatBox.prepend(msgBox);
       msgBox.slideDown(400);
-      $('textarea').val("");
+      $('#new-message').val("");
     });
   }
 }

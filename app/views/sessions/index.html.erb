@@ -1,10 +1,12 @@
-<h1>Welcome to EmoChat.io</h1>
+<div class="center">
+	<h1>Welcome to EmoChat.io</h1>
 
-<% if signed_in? %>
-  <li><%= link_to "Star Chatting!", chatrooms_path %></li>
-<% else %>
-  <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
-  <li><%= link_to "Join Chat.ly via Twitter", "/auth/twitter" %></li>
-<% end %>
+	<% if signed_in? %>
+	<li><%= link_to "Star Chatting!", chatrooms_path %></li>
+	<% else %>
+	<li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+	<li><%= link_to "Join Chat.ly via Twitter", "/auth/twitter" %></li>
+	<% end %>
 
-<img src="http://placepuppy.it/800/600" alt="">
+	<img src="http://placepuppy.it/800/600" alt="" class="hero">
+</div>
