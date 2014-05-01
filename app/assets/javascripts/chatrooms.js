@@ -1,11 +1,22 @@
 function msgLayout(currentUser) {
   var msg = $('.message-box');
+  var box = $('.arrow_box');
   for (var i = 0; i < msg.length; i++) {
     if (msg.eq(i).attr('id') == currentUser) {
       msg.eq(i).removeClass('left');
       msg.eq(i).addClass('right');
+      if (box.eq(i).text().indexOf("http") >= 0) {
+        var msgText = msg.eq(i).text();
+        box.eq(i).text("");
+        box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
+      }
     }
   }
+}
+
+function urlToHTMLinks(text) {
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
+    return text.replace(exp,"<a href='$1'>$1</a>");
 }
 
 function addMessage(data) {
