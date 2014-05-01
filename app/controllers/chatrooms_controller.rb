@@ -27,7 +27,7 @@ class ChatroomsController < ApplicationController
   end
 
   def search
-    room_name = params[:search].gsub(/\s+/,"_").gsub(",","_").gsub(/"/,"'")
+    room_name = params[:search].gsub(/\s+/,"_").gsub(",","_").gsub(/"/,"'").gsub(".","(dot)")
     @chatroom = Chatroom.find_by(name: room_name)
     if @chatroom
       redirect_to "/chatrooms/#{@chatroom.name}"
