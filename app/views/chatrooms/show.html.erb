@@ -14,7 +14,7 @@
   <% @messages.each do |msg| %>
     <div class="message-box left" id="<%= msg.user.username %>">
       <div class="message-avatar avatar">
-        <img src='<%= RestClient.get("https://s3.amazonaws.com/s3-sample-pt/#{msg.user.username}_#{msg.emotion}.png") %>'>
+        <img src='<%= RestClient.get("https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/#{msg.user.username}_#{msg.emotion}.png") %>'>
       </div>
       <div class="message-content">
         <div class="arrow_box"><%= msg.content %></div>
