@@ -14,7 +14,7 @@
   <% @messages.each do |msg| %>
   <div class="message-wrap">
     <div class="message-avatar avatar">
-      <img src='<%= RestClient.get("https://s3.amazonaws.com/s3-sample-pt/#{msg.user.username}_#{msg.emotion}.png") %>'>
+      <img src='<%#= RestClient.get("https://s3.amazonaws.com/s3-sample-pt/#{msg.user.username}_#{msg.emotion}.png") %>'>
     </div>
     <div class="message-box left" id="<%= msg.user.username %>">
       <p><%= msg.content %></p>
@@ -24,7 +24,7 @@
   <% end %>
 </div>
 
-<div class= "available_users">
+<div class="ranked_users" id ="ranking_box">
 
 <div>
 

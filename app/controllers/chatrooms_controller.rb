@@ -40,7 +40,7 @@ class ChatroomsController < ApplicationController
       User.find_by(username: usr).messages.where(chatroom_id: chatroom.id).size
     end
     ranking_data = users.zip(user_msg_count)
-
+    
     new_msgs = []
     messages.each do |msg|
       if msg.created_at.to_i >= (params[:timestamp].to_i / 1000 - 3) && msg.user.username != current_user.username
@@ -51,7 +51,7 @@ class ChatroomsController < ApplicationController
     return_data = {
       messages: messages,
       user: current_user.username,
-      ranking_data: ranking_data,
+      rankings: ranking_data,
       newMsgs: new_msgs
     }
 

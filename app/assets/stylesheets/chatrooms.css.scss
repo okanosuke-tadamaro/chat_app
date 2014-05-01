@@ -58,3 +58,22 @@
     left: -23px;
   }
 }
+
+.ranked_users {
+  display: inline-block;
+  width: 400px;
+  background-color: lightgray;
+  height: 100px;
+  overflow: hidden;
+  border: solid 3px black;
+  border-radius: 25%;
+  margin: 0;
+  text-align: right;
+  font-family: 'Helvetica';
+  p {
+    margin: 0;
+    padding: 10px 5px 10px 5px;
+  }
+
+
+}
