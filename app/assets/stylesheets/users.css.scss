@@ -1,0 +1,42 @@
+.photo-left {
+	width: 181px;
+	float: left;
+	margin-right: 20px;
+	#player {
+		width: 171px;
+		height: 128px;
+		background-color: #e67e22;
+		padding: 5px;
+	}
+	#canvas {
+		width: 171px;
+		height: 128px;
+		background: white;
+		padding: 5px;
+	}
+}
+
+.photo-right {
+	float: left;
+	width: 362px;
+	margin-right: 20px;
+	img {
+		padding: 5px;
+		background-color: white;
+	}
+}
+
+button {
+	border: none;
+	height: 30px;
+	width: 100px;
+	cursor: pointer;
+}
+
+.placeholders {
+	border-radius: 50%;
+}
+
+#status {
+	font-size: 18px;
+}

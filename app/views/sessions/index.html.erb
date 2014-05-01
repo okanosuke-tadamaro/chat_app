@@ -1,0 +1,13 @@
+<div class="center">
+	<h1>Welcome to EmoChat.io</h1>
+
+	<% if signed_in? %>
+		<%= link_to "Start Chatting!", chatrooms_path %>
+	<% else %>
+		<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+	<% end %>
+	
+	<div class="welcome-logo">
+		<%= image_tag('logo.png') %>
+	</div>
+</div>

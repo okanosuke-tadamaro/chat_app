@@ -1,0 +1,44 @@
+<div class="left_col">
+  <h3 class="room-name"><%= @chatroom.name %></h3>
+
+  <div class="avatar_box">
+    <% @avatars.each do |emo, img| %>
+    <div class="avatar-label">
+      <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+      <div class="label">#<%= emo %></div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="message-form">
+    <input type="text" id="new-message">
+    <button id="send-button">Send</button>
+  </div>
+
+<div class="chat-box">
+  <% @messages.each do |msg| %>
+    <div class="message-box left" id="<%= msg.user.username %>" msg_id="<%= msg.id %>">
+      <div class="message-avatar avatar">
+        <img src='<%= msg.user.get_avatar(msg.emotion).read %>'>
+      </div>
+      <div class="message-content">
+        <div class="arrow_box"><%= msg.content %></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+  </div>
+
+</div>
+<div class="right_col">
+  <h3>Top Contributors</h3>
+  <div class="ranked_users" id="ranking_box">
+  </div>
+</div>
+
+
+<%= javascript_tag do %>
+  msgLayout("<%= j(current_user.username) %>");
+  setInterval(grabMessages, 2500);
+<% end %>
+

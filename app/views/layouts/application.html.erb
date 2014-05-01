@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChatApp</title>
+  <title>EmoChat.io</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="fixed_header">
+    <div class="header_content">
+      <div class="logo">
+        <h1><%= link_to "emochat.io", root_path %></h1>
+      </div>
+      <ul class="nav">
+        <li><%= link_to "Account", chatrooms_path %></li>
+        <li><%= link_to "Sign Out", signout_path %></li>
+        <li><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
+      </ul>
+    </div>
+  </div>
 
-<%= yield %>
-
+  <div class="wrap">
+    <%= yield %>
+  </div>
 </body>
 </html>
