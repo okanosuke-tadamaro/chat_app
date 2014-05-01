@@ -17,7 +17,7 @@
     <%= render "form" %>
     <h3>Search Chatroom</h3>
     <%= render "search" %>
-  </div>  
+  </div>
 </div>
 <div class="right_col">
   <div class="recent_rooms">
@@ -25,11 +25,11 @@
     <ul class="room_list">
       <% @recent_rooms.each do |room_name, time_left| %>
       <div class="rooms">
-        <li class="room_list_text"><%= link_to "#{room_name} - #{time_left}", "/chatrooms/#{room_name}" %></li>
+        <li class="room_list_text"><%= link_to "#{room_name}: #{time_left}", "/chatrooms/#{room_name}" %></li>
       </div>
       <% end %>
     </ul>
-  </div>  
+  </div>
 </div>
 <div class="clear"></div>
 

@@ -17,5 +17,13 @@ class Chatroom < ActiveRecord::Base
     end
   end
 
+  def how_old?
+    creation = self.created_at.getgm
+    seconds = Time.now.getgm - creation
+    hours = 24 - (seconds/3600)
+    minutes = 60 - ((seconds/60) % 60)
+    return "#{hours.floor} hours, #{minutes.floor} minutes left"
+  end
+
 end
 

@@ -10,7 +10,7 @@ class ChatroomsController < ApplicationController
     rooms = rooms_ids.map { |id| Chatroom.find(id) }
     @recent_rooms = {}
     rooms.each do |room|
-      @recent_rooms[room.name] = "#{(24 - room.created_at.hour) + (Time.now.hour - room.created_at.hour) + 4} hours #{(Time.now.min - room.created_at.min).abs} minutes left"
+      @recent_rooms[room.name] = room.how_old?
     end
     updated_rooms = @recent_rooms.map do |room_name, time_left|
       new_array = []
