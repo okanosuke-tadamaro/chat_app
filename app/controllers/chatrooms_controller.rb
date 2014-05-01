@@ -6,11 +6,11 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new
 
     #AJAX request for rooms participated in
-    rooms_ids = current_user.messages.pluck(:chatroom_id).uniq
+    rooms_ids = current_user.messages.pluck(:chatroom_id).uniq.sort!
     rooms = rooms_ids.map { |id| Chatroom.find(id) }
     @recent_rooms = {}
     rooms.each do |room|
-      @recent_rooms[room.name] = "#{(24 - room.created_at.hour) + (Time.now.hour - room.created_at.hour) + 4} hours #{(Time.now.min - room.created_at.min).abs} minutes left"
+      @recent_rooms[room.name] = room.how_old?
     end
     updated_rooms = @recent_rooms.map do |room_name, time_left|
       new_array = []
@@ -27,7 +27,7 @@ class ChatroomsController < ApplicationController
   end
 
   def search
-    room_name = params[:search].gsub(/\s+/,"_").gsub(",","_").gsub(/"/,"'")
+    room_name = params[:search].gsub(/\s+/,"_").gsub(",","_").gsub(/"/,"'").gsub(".","(dot)")
     @chatroom = Chatroom.find_by(name: room_name)
     if @chatroom
       redirect_to "/chatrooms/#{@chatroom.name}"
@@ -78,7 +78,7 @@ class ChatroomsController < ApplicationController
       rankings: ranking_data,
       newMsgs: new_msgs
     }
-
+    
     respond_to do |format|
       format.json { render json: return_data.to_json }
     end

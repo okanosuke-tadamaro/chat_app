@@ -1,10 +1,21 @@
 function msgLayout(currentUser) {
   var msg = $('.message-box');
+  var box = $('.arrow_box');
   for (var i = 0; i < msg.length; i++) {
+    var boxText = box.eq(i).text();
+    var msgText = msg.eq(i).text();
     if (msg.eq(i).attr('id') == currentUser) {
       msg.eq(i).removeClass('left');
       msg.eq(i).addClass('right');
     }
+    if (boxText.indexOf("http") >= 0) {
+      box.eq(i).text("");
+      box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
+    }
+    // if (boxText.indexOf(".gif") >= 0 || boxText.indexOf(".jpg") >= 0 || boxText.indexOf(".png") >= 0) {
+    //   box.eq(i).text(msgText);
+    //   box.eq(i).append($('<img>').attr('src', msgText));
+    // }
   }
 }
 
@@ -17,10 +28,15 @@ function addMessage(data) {
     var avatarBox = $('<div>').addClass('message-avatar').addClass('avatar').append(avatar);
     var arrowBox = $('<div>').addClass('arrow_box');
     var messageContent = $('<div>').addClass('message-content');
+    var msgText = newMsgs[i].message.content;
 
     msgBox.attr('id', data.user).addClass('left');
     msgBox.attr('msg_id', newMsgs[i].msg_id);
-    arrowBox.text(newMsgs[i].message.content).appendTo(messageContent);
+    if (msgText.indexOf("http") >= 0) {
+        arrowBox.append($('<a>').attr('href', msgText).text(msgText)).appendTo(messageContent);
+      } else {
+        arrowBox.text(msgText).appendTo(messageContent);
+      }
     msgBox.append(avatarBox);
     msgBox.append(messageContent);
     chatBox.prepend(msgBox);
@@ -37,7 +53,7 @@ function recentRoomTimes() {
     var roomListText = $('.room_list_text');
     roomListText.empty();
     for (var i = 0; i < roomListText.length; i++) {
-      var roomLink = $('<a>').attr('href', '/chatrooms/' + updatedRooms[i][0]).text(updatedRooms[i][0] + " - " + updatedRooms[i][1]);
+      var roomLink = $('<a>').attr('href', '/chatrooms/' + updatedRooms[i][0]).text(updatedRooms[i][0] + ": " + updatedRooms[i][1]);
       roomListText.eq(i).append(roomLink);
     }
   });

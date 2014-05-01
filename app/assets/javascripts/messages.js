@@ -24,7 +24,16 @@ function createMessage() {
       msgBox.attr('msg_id', data.msg_id);
       var messageContent = $('<div>').addClass('message-content');
       var arrowBox = $('<div>').addClass('arrow_box');
-      arrowBox.text(data.obj.content).appendTo(messageContent);
+      var msgText = data.obj.content;
+
+      if (msgText.indexOf("http") >= 0) {
+        arrowBox.append($('<a>').attr('href', msgText).text(msgText)).appendTo(messageContent);
+        // if (msgText.indexOf(".gif") >= 0){
+        // arrowBox.append($('<img>').attr('src', msgText)).appendTo(messageContent);
+        // }
+      } else {
+        arrowBox.text(msgText).appendTo(messageContent);
+      }
       messageContent.appendTo(msgBox);
       chatBox.prepend(msgBox);
       msgBox.slideDown(400);

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
 	before_action :current_user, only: [:create_avatar]
-	
+
 	#Photo taking
 	def register
 		flash[:notice] = "Get ready to take your avatar photos! Make sure to allow access to your webcam!"
 	end
-	
+
 	#creating avatars and storing directly into AWS S3
 	def create_avatar
 		s3 =  User.new_aws_request
