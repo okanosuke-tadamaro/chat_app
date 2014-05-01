@@ -1,9 +1,13 @@
+
 <div class="left_col">
   <h1>Hey <%= current_user.username %>!</h1>
   <h4 class="notice"><%= flash[:notice] %></h4>
   <div class="avatar_box">
     <% @avatars.each do |emo, img| %>
-      <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+      <div class="avatar-label">
+        <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+        <div class="label">#<%= emo %></div>
+      </div>
     <% end %>
   </div>
   <p>Feel like going with a different face today? Retake your avatars and surprise your friends!!</p>
