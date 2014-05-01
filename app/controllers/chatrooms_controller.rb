@@ -6,7 +6,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new
 
     #AJAX request for rooms participated in
-    rooms_ids = current_user.messages.pluck(:chatroom_id).uniq
+    rooms_ids = current_user.messages.pluck(:chatroom_id).uniq.sort!
     rooms = rooms_ids.map { |id| Chatroom.find(id) }
     @recent_rooms = {}
     rooms.each do |room|
