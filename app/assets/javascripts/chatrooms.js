@@ -44,7 +44,9 @@ function recentRoomTimes() {
 
 function ranking(data) {
   var rankingData = data.rankings;
-  rankingData.sort(function(a,b){return a[1]-b[1]});
+  rankingData.sort(function(a,b){
+    return a[1]-b[1];
+  });
   var rankingBox = $('#ranking_box');
   rankingBox.empty();
   for(var i = 0; i < rankingData.length; i++) {
@@ -52,8 +54,6 @@ function ranking(data) {
     rankingBox.append(userInfo);
   }
 }
-  
-
 
 function grabMessages() {
   var roomName = $('.room-name').text();
