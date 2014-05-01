@@ -4,6 +4,7 @@
   <div class="avatar_box">
     <% @avatars.each do |emo, img| %>
       <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+      <div class="label"></div>
     <% end %>
   </div>
   
@@ -27,10 +28,9 @@
   </div>  
 </div>
 <div class="right_col">
-  
+  <div class="ranked_users" id="ranking_box">
+  </div>
 </div>
-
-
 
 
 <%= javascript_tag do %>

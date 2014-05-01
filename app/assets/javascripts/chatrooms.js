@@ -44,8 +44,17 @@ function recentRoomTimes() {
 }
 
 function ranking(data) {
-
+  var rankingData = data.rankings;
+  rankingData.sort(function(a,b){return a[1]-b[1]});
+  var rankingBox = $('#ranking_box');
+  rankingBox.empty();
+  for(var i = 0; i < rankingData.length; i++) {
+    var userInfo = $('<div>').text(rankingData[i][1] + ' ' + rankingData[i][0]);
+    rankingBox.append(userInfo);
+  }
 }
+  
+
 
 function grabMessages() {
   var roomName = $('.room-name').text();

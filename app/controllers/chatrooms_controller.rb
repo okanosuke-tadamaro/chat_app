@@ -75,7 +75,7 @@ class ChatroomsController < ApplicationController
     #Returned AJAX object
     return_data = {
       user: current_user.username,
-      rankingData: ranking_data,
+      rankings: ranking_data,
       newMsgs: new_msgs
     }
 
