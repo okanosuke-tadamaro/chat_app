@@ -21,7 +21,7 @@ function createMessage() {
       avatarImage.appendTo(avatarBox);
       avatarBox.appendTo(msgBox);
       msgBox.attr('id', user).addClass('right');
-      msgBox.attr('msg_id', data.obj.id);
+      msgBox.attr('msg_id', data.msg_id);
       var messageContent = $('<div>').addClass('message-content');
       var arrowBox = $('<div>').addClass('arrow_box');
       arrowBox.text(data.obj.content).appendTo(messageContent);
