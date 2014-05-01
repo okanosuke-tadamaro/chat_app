@@ -2,7 +2,7 @@
 	<h1>Welcome to EmoChat.io</h1>
 
 	<% if signed_in? %>
-	<li><%= link_to "Star Chatting!", chatrooms_path %></li>
+	<li><%= link_to "Start Chatting!", chatrooms_path %></li>
 	<% else %>
 	<li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
 	<li><%= link_to "Join Chat.ly via Twitter", "/auth/twitter" %></li>
