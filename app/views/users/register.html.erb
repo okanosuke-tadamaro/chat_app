@@ -1,4 +1,5 @@
-<h1>Register your avatars!</h1>
+<h1>Register your Avatars!</h1>
+<h4 class="notice"><%= flash[:notice] %></h4>
 <p id="status"></p>
 <div id="photo-area">
 	<div class="photo-left">
@@ -6,7 +7,8 @@
 		<canvas id="canvas"></canvas>
 	</div>
 	<div class="photo-right">
-
+    <%= image_tag 'happy_placeholder.png', class: "placeholders" %>
+    <%= image_tag 'sad_placeholder.png', class: "placeholders" %>
 	</div>
 	<button id="startbutton">Take photo</button>
 </div>

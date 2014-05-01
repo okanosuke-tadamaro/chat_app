@@ -28,6 +28,21 @@ function addMessage(data) {
   }
 }
 
+function recentRoomTimes() {
+  $.ajax({
+    url: '/chatrooms',
+    method: 'get',
+    dataType: 'json',
+  }).done(function(updatedRooms) {
+    var roomListText = $('.room_list_text');
+    roomListText.empty();
+    for (var i = 0; i < roomListText.length; i++) {
+      var roomLink = $('<a>').attr('href', '/chatrooms/' + updatedRooms[i][0]).text(updatedRooms[i][0] + " - " + updatedRooms[i][1]);
+      roomListText.eq(i).append(roomLink);
+    }
+  });
+}
+
 function ranking(data) {
 
 }
@@ -47,3 +62,4 @@ function grabMessages() {
     ranking(data);
   });
 }
+

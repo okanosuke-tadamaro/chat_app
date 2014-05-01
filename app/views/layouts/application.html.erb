@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChatApp</title>
+  <title>EmoChat.io</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,18 +10,17 @@
   <div class="fixed_header">
     <div class="header_content">
       <div class="logo">
-        <h1>Chat_app</h1>
+        <h1>EmoChat.io</h1>
       </div>
       <ul class="nav">
-        <% if signed_in? %>
-          <li>Welcome <%= session[:username] %>! <%= link_to "Sign Out", "/signout" %></li>
-        <% else %>
-          <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
-        <% end %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Account", chatrooms_path %></li>
+        <li><%= link_to "Sign Out", signout_path %></li>
+        <li><%= link_to "Donate", "https://www.paypal.com/home" %></li>
       </ul>
     </div>
   </div>
-  
+
   <div class="wrap">
     <%= yield %>
   </div>

@@ -13,7 +13,6 @@ function createMessage() {
         room_name: roomName,
       }
     }).done(function(data) {
-      console.log(data);
       var chatBox = $('.chat-box');
       var msgBox = $('<div>').addClass('message-box').hide();
       var user = data.user;
