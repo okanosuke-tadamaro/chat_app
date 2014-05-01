@@ -11,8 +11,9 @@
 * AWS S3
 * Twitter OAuth/API
 * HTML 5 Video/Webcam Interactions
+* Foundations Styling Framework
 
-#####Entity Relationship Diagram
+#####Entity Relationship Diagram - NEEDS UPDATE
 ![ERD](http://i.imgur.com/So7Lldx.png)
 
 
