@@ -2,15 +2,20 @@ function msgLayout(currentUser) {
   var msg = $('.message-box');
   var box = $('.arrow_box');
   for (var i = 0; i < msg.length; i++) {
+    var boxText = box.eq(i).text();
+    var msgText = msg.eq(i).text();
     if (msg.eq(i).attr('id') == currentUser) {
       msg.eq(i).removeClass('left');
       msg.eq(i).addClass('right');
     }
-    if (box.eq(i).text().indexOf("http") >= 0) {
-      var msgText = msg.eq(i).text();
+    if (boxText.indexOf("http") >= 0) {
       box.eq(i).text("");
       box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
     }
+    // if (boxText.indexOf(".gif") >= 0 || boxText.indexOf(".jpg") >= 0 || boxText.indexOf(".png") >= 0) {
+    //   box.eq(i).text(msgText);
+    //   box.eq(i).append($('<img>').attr('src', msgText));
+    // }
   }
 }
 
