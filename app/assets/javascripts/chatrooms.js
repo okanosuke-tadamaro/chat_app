@@ -14,11 +14,6 @@ function msgLayout(currentUser) {
   }
 }
 
-function urlToHTMLinks(text) {
-    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
-    return text.replace(exp,"<a href='$1'>$1</a>");
-}
-
 function addMessage(data) {
   var newMsgs = data.newMsgs;
   var chatBox = $('.chat-box');
@@ -28,10 +23,15 @@ function addMessage(data) {
     var avatarBox = $('<div>').addClass('message-avatar').addClass('avatar').append(avatar);
     var arrowBox = $('<div>').addClass('arrow_box');
     var messageContent = $('<div>').addClass('message-content');
+    var msgText = newMsgs[i].message.content;
 
     msgBox.attr('id', data.user).addClass('left');
     msgBox.attr('msg_id', newMsgs[i].msg_id);
-    arrowBox.text(newMsgs[i].message.content).appendTo(messageContent);
+    if (msgText.indexOf("http") >= 0) {
+        arrowBox.append($('<a>').attr('href', msgText).text(msgText)).appendTo(messageContent);
+      } else {
+        arrowBox.text(msgText).appendTo(messageContent);
+      }
     msgBox.append(avatarBox);
     msgBox.append(messageContent);
     chatBox.prepend(msgBox);
