@@ -53,7 +53,7 @@ class ChatroomsController < ApplicationController
 
   def get_messages
     chatroom = Chatroom.find_by(name: params[:name])
-    messages = chatroom.messages.order(created_at: :desc)
+    messages = chatroom.messages.order(id: :desc)
 
     #AJAX request for user message ranking system in a chatroom
     users = []
@@ -67,8 +67,8 @@ class ChatroomsController < ApplicationController
     #AJAX request for new messages in chatroom - need to fix by ID instead of time value
     new_msgs = []
     messages.each do |msg|
-      if msg.created_at.to_i >= (params[:timestamp].to_i / 1000 - 3) && msg.user.username != current_user.username
-        new_msgs << { message: msg.html_safe, avt: msg.user.get_avatar(msg.emotion).read }
+      if msg.id > params[:msg_id].to_i && msg.user.username != current_user.username
+        new_msgs << { message: msg, avt: msg.user.get_avatar(msg.emotion).read, msg_id: msg.id }
       end
     end
 

@@ -19,6 +19,7 @@ function addMessage(data) {
     var messageContent = $('<div>').addClass('message-content');
 
     msgBox.attr('id', data.user).addClass('left');
+    msgBox.attr('msg_id', newMsgs[i].msg_id);
     arrowBox.text(newMsgs[i].message.content).appendTo(messageContent);
     msgBox.append(avatarBox);
     msgBox.append(messageContent);
@@ -44,7 +45,7 @@ function recentRoomTimes() {
 
 function ranking(data) {
   var rankingData = data.rankings;
-  rankingData.sort(function(a,b){return a[1]-b[1]});
+  rankingData.sort(function(a,b){return a[1]-b[1];});
   var rankingBox = $('#ranking_box');
   rankingBox.empty();
   for(var i = 0; i < rankingData.length; i++) {
@@ -52,18 +53,17 @@ function ranking(data) {
     rankingBox.append(userInfo);
   }
 }
-  
-
 
 function grabMessages() {
   var roomName = $('.room-name').text();
+  var latestMsgID = $('.message-box').eq(0).attr('msg_id');
   $.ajax({
     url: '/get_messages',
     method: 'get',
     dataType: 'json',
     data: {
       name: roomName,
-      timestamp: $.now()
+      msg_id: latestMsgID
     }
   }).done(function(data) {
     addMessage(data);
