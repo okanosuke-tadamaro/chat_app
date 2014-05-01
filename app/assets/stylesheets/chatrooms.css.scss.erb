@@ -1,14 +1,51 @@
-a {
-  text-decoration: none;
+body {
+  background-image: url('<%= asset_path('fabric_plaid.png') %>');
+  background-attachment: fixed;
+  font-family: 'Roboto Condensed';
+  color: #333;
 }
 
-.clear {
-  clear:both;
-}
+.clear { clear:both; }
+.center { text-align: center; }
+.button { border: none; }
+.left_col { width: 680px; float: left; }
+.right_col { width: 290px; float: right; }
+.wrap { width: 980px; margin: 0 auto; padding-top: 80px; }
+a { text-decoration: none; color: #e67e22; }
 
-.wrap {
-  width: 980px;
-  margin: 0 auto;
+.fixed_header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  .header_content {
+    width: 980px;
+    margin: 0 auto;
+    .logo {
+      float: left;
+      h1 {
+        margin: 0;
+        line-height: 60px;
+        font-size: 26px;
+        text-transform: lowercase;
+      }
+    }
+    .nav {
+      margin: 0;
+      float: right;
+      li {
+        display: inline;
+        line-height: 60px;
+        margin-left: 10px;
+      }
+    }
+    a {
+      color: #333;
+    }
+  }
 }
 
 .chat-box {
@@ -101,6 +138,9 @@ a {
   }
 }
 
+.avatar_box .avatar { margin-right: 27px; }
+.avatar_box .avatar:last-child { margin-right: 0; }
+
 .avatar {
   display: inline-block;
   width: 80px;
@@ -114,5 +154,18 @@ a {
     position: relative;
     height: 80px;
     left: -13px;
+  }
+}
+
+.message-form {
+  #new-message {
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    height: 40px;
+  }
+  button {
+    width: 15%;
+    height: 40px;
   }
 }

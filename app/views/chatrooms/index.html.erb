@@ -1,14 +1,23 @@
-<h1><%= current_user.username %></h1>
-<h4 class="notice"><%= flash[:notice] %></h4>
-<div class="avatar_box">
-  <% @avatars.each do |emo, img| %>
-    <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
-  <% end %>
+<div class="left_col">
+  <h1>Hey <%= current_user.username %>!</h1>
+  <h4 class="notice"><%= flash[:notice] %></h4>
+  <div class="avatar_box">
+    <% @avatars.each do |emo, img| %>
+      <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
+    <% end %>
+  </div>
+  <p>Feel like going with a different face today? Retake your avatars and surprise your friends!!</p>
+  <%= button_to "Retake Avatars", register_path, method: 'get', :class => "button" %>
+
+  <div class="chat-index">
+    <h3>Create Chatroom</h3>
+    <%= render "form" %>
+    <h3>Search Chatroom</h3>
+    <%= render "search" %>
+  </div>  
 </div>
-
-<%= button_to "Retake Avatars", register_path, :id => "retake_avatars_button", :method => :get %>
-
-<div class="recent_rooms">
+<div class="right_col">
+  <div class="recent_rooms">
   <h3>Recent Rooms</h3>
   <ul class="room_list">
     <% @recent_rooms.each do |room_name, time_left| %>
@@ -17,14 +26,9 @@
       </div>
     <% end %>
   </ul>
+</div>  
 </div>
-
-<div class="chat-index">
-  <h3>Create Chatroom</h3>
-  <%= render "form" %>
-  <h3>Search Chatroom</h3>
-  <%= render "search" %>
-</div>
+<div class="clear"></div>
 
 <%= javascript_tag do %>
   setInterval(recentRoomTimes, 45000);
