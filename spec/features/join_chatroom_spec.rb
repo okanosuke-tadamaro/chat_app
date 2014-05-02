@@ -5,3 +5,7 @@ require 'spec_helper'
 # A user should be redirected to show page upon match
 
 # A user should receive an error message and stay on the same page if no chatroom matches.
+
+describe Chatroom do
+  pending "user can join a chatroom after signing in with Twitter"
+end
