@@ -5,6 +5,7 @@
   <link rel="icon" type="image/png" href="http://i.imgur.com/mCtiV8I.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,9 +16,9 @@
         <h1><%= link_to "emochat.io", root_path %></h1>
       </div>
       <ul class="nav">
-        <li><%= link_to "Account", chatrooms_path %></li>
-        <li><%= link_to "Sign Out", signout_path %></li>
-        <li><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
+        <li><i class="fa fa-user"></i><%= link_to "Account", chatrooms_path %></li>
+        <li><i class="fa fa-sign-out"></i><%= link_to "Sign Out", signout_path %></li>
+        <li><i class="fa fa-usd"></i><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
       </ul>
     </div>
   </div>

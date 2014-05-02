@@ -2,7 +2,7 @@ body {
   background-image: url('<%= asset_path('fabric_plaid.png') %>');
   background-attachment: fixed;
   font-family: 'Roboto Condensed';
-  color: #333;
+  color: #555;
 }
 
 .clear { clear:both; }
@@ -10,8 +10,13 @@ body {
 .button { border: none; }
 .left_col { width: 680px; float: left; }
 .right_col { width: 250px; float: right; }
+.right { float: right; }
+.left { float: left; }
+i { width: 20px; color: #e67e22; }
 .wrap { width: 980px; margin: 0 auto; padding-top: 90px; }
 a { text-decoration: none; color: #e67e22; }
+
+
 
 .welcome-logo img {
   width: 512px;
@@ -53,6 +58,17 @@ a { text-decoration: none; color: #e67e22; }
     }
     a {
       color: #333;
+    }
+  }
+}
+
+.chat-index {
+  margin-top: 40px;
+  .form-box {
+    width: 330px;
+    text-align: center;
+    h3 {
+      margin-bottom: 10px;
     }
   }
 }
@@ -171,7 +187,7 @@ a { text-decoration: none; color: #e67e22; }
   }
 }
 
-.avatar_box { margin-top: 20px; margin-bottom: 20px; text-align: center; }
+.avatar_box { margin-top: 40px; margin-bottom: 20px; text-align: center; }
 .avatar-label {
   display: inline-block;
   width: 86px;
@@ -200,8 +216,9 @@ a { text-decoration: none; color: #e67e22; }
 
 .room_list {
   list-style-type: none;
-  margin: 20px 0 0 0;
-  .rooms li {
+  
+  li {
+    width: 100%;
     line-height: 25px;
     margin: 0;
   }

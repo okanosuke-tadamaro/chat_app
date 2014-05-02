@@ -9,22 +9,29 @@
     </div>
     <% end %>
   </div>
-  <p>Feel like going with a different face today? Retake your avatars and surprise your friends!!</p>
-  <%= button_to "Retake Avatars", register_path, method: 'get', :class => "button" %>
+  <p class="center">Feel like going with a different face today? Retake your avatars and surprise your friends!! <%= link_to "Retake Avatars", register_path, :class => "button" %></p>
 
   <div class="chat-index">
-    <h3>Create Chatroom</h3>
-    <%= render "form" %>
-    <h3>Search Chatroom</h3>
-    <%= render "search" %>
+    <div class="form-box left">
+      <h3>Create Chatroom</h3>
+      <%= render "form" %>
+    </div>
+    <p class="left">OR</p>
+    <div class="form-box right">
+      <h3>Search Chatroom</h3>
+      <%= render "search" %>
+    </div>
+    <div class="clear"></div>
   </div>
 </div>
 <div class="right_col">
   <div class="recent_rooms">
     <h3>Recent Rooms</h3>
+    <hr>
     <ul class="room_list">
       <% @recent_rooms.each do |room_name, time_left| %>
-      <li class="room_list_text"><%= link_to "#{room_name}", "/chatrooms/#{room_name}" %>: <%= "#{time_left}" %></li>
+      <li class="room_list_text"><span class="left"><i class="fa fa-bookmark"></i><%= link_to "#{room_name} :", "/chatrooms/#{room_name}" %></span><span class="right"><%= "#{time_left}" %></span></li>
+      <li class="clear"></li>
       <% end %>
     </ul>
   </div>
