@@ -12,7 +12,7 @@ function msgLayout(currentUser) {
       box.eq(i).text("");
       box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
       if (boxText.indexOf(".gif") >= 0 || boxText.indexOf(".jpg") >= 0 || boxText.indexOf(".png") >= 0) {
-          box.eq(i).append($('<img>').attr('src', msgText).addClass('message-image'));
+          box.eq(i).append($('<img>').attr('src', msgText).attr('class', 'message-image'));
         }
     }
   }
@@ -34,7 +34,7 @@ function addMessage(data) {
     if (msgText.indexOf("http") >= 0) {
         arrowBox.append($('<a>').attr('href', msgText).text(msgText)).appendTo(messageContent);
         if (msgText.indexOf(".gif") >= 0 || msgText.indexOf(".jpg") >= 0 || msgText.indexOf(".png") >= 0) {
-          arrowBox.append($('<img>').attr('src', msgText)).addClass('message-image').appendTo(messageContent);
+          arrowBox.append($('<img>').attr('src', msgText).attr('class', 'message-image')).appendTo(messageContent);
         }
       } else {
         arrowBox.text(msgText).appendTo(messageContent);

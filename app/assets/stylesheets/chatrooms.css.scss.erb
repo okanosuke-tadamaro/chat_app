@@ -83,12 +83,16 @@ a { text-decoration: none; color: #e67e22; }
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2) inset;
 }
 
-.message-box { 
+.message-box {
   margin: 10px 0 10px 0;
   .message-avatar { width: 86px; }
   .message-content { min-width: 400px; max-width: 500px; border: solid 1px lightgray; position: relative; }
   .arrow_box {
     word-wrap: break-word;
+  }
+  .message-image {
+    max-height: 50%;
+    max-width: 50%;
   }
 }
 
@@ -129,7 +133,7 @@ a { text-decoration: none; color: #e67e22; }
     margin-top: -21px;
   }
 }
-  
+
 .right { float: right; text-align: right;
   .message-avatar { float: right; margin-left: 20px; }
   .message-content {
