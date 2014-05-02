@@ -3,7 +3,7 @@ function createMessage() {
   var newMsg = $('#new-message').val();
   var roomName = $('.room-name').text();
 
-  if (newMsg !== "") {
+  if (newMsg.trim() !== "") {
     $.ajax({
       url: '/messages',
       method: 'post',
