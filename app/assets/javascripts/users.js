@@ -37,8 +37,8 @@ function webCam() {
 					document.querySelector('.photo-right').appendChild(imageTag);
 					if (emotions.length === 0) {
 						document.querySelector('#status').innerHTML = "You're ready to go! click next to proceed!";
-						document.querySelector('#photo-area').removeChild(document.querySelector('#startbutton'));
-						document.querySelector('#photo-area').removeChild(document.querySelector('#confirm-button'));
+						document.querySelector('.buttons').removeChild(document.querySelector('#startbutton'));
+						document.querySelector('.buttons').removeChild(document.querySelector('#confirm-button'));
 						var nextButton = document.createElement('button');
 						nextButton.id = 'next-button';
 						nextButton.innerHTML = "Next";
