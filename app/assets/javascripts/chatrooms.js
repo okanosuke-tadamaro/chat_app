@@ -10,12 +10,12 @@ function msgLayout(currentUser) {
     }
     if (boxText.indexOf("http") >= 0) {
       box.eq(i).text("");
-      box.eq(i).append($('<a>').attr('href', msgText).attr('target', '_blank').text(msgText));
+
+      box.eq(i).append($('<a>').attr('href', msgText).text(msgText));
+      if (boxText.indexOf(".gif") >= 0 || boxText.indexOf(".jpg") >= 0 || boxText.indexOf(".png") >= 0) {
+        box.eq(i).append($('<img>').attr('src', msgText).attr('class', 'message-image'));
+      }
     }
-    // if (boxText.indexOf(".gif") >= 0 || boxText.indexOf(".jpg") >= 0 || boxText.indexOf(".png") >= 0) {
-    //   box.eq(i).text(msgText);
-    //   box.eq(i).append($('<img>').attr('src', msgText));
-    // }
   }
 }
 
@@ -33,10 +33,13 @@ function addMessage(data) {
     msgBox.attr('id', data.user).addClass('left');
     msgBox.attr('msg_id', newMsgs[i].msg_id);
     if (msgText.indexOf("http") >= 0) {
-        arrowBox.append($('<a>').attr('href', msgText).attr('target', '_blank').text(msgText)).appendTo(messageContent);
-      } else {
-        arrowBox.text(msgText).appendTo(messageContent);
+      arrowBox.append($('<a>').attr('href', msgText).text(msgText)).appendTo(messageContent);
+      if (msgText.indexOf(".gif") >= 0 || msgText.indexOf(".jpg") >= 0 || msgText.indexOf(".png") >= 0) {
+        arrowBox.append($('<img>').attr('src', msgText).attr('class', 'message-image')).appendTo(messageContent);
       }
+    } else {
+      arrowBox.text(msgText).appendTo(messageContent);
+    }
     msgBox.append(avatarBox);
     msgBox.append(messageContent);
     chatBox.prepend(msgBox);
