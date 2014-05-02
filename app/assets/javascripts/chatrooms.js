@@ -53,11 +53,22 @@ function recentRoomTimes() {
     method: 'get',
     dataType: 'json',
   }).done(function(updatedRooms) {
-    var roomListText = $('.room_list_text');
+    var roomListText = $('.room_list');
     roomListText.empty();
-    for (var i = 0; i < roomListText.length; i++) {
-      var roomLink = $('<a>').attr('href', '/chatrooms/' + updatedRooms[i][0]).text(updatedRooms[i][0] + " : " + updatedRooms[i][1]);
-      roomListText.eq(i).append(roomLink);
+    for (var i = 0; i < updatedRooms.length; i++) {
+      var listItem = $('<li>').addClass('room_list_text');
+      var spanLeft = $('<span>').addClass('left');
+      var spanRight = $('<span>').addClass('right');
+      var icon = $('<i>').addClass('fa fa-bookmark');
+      var roomLink = $('<a>').attr('href', '/chatrooms/' + updatedRooms[i][0]).text(updatedRooms[i][0] + " : ");
+      var timeText = updatedRooms[i][1];
+      icon.appendTo(spanLeft);
+      roomLink.appendTo(spanLeft);
+      spanLeft.appendTo(listItem);
+      spanRight.text(timeText).appendTo(listItem);
+      listItem.appendTo(roomListText);
+      var clear = $('<li>').addClass('clear');
+      clear.appendTo(roomListText);
     }
   });
 }
