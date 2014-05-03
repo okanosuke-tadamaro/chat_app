@@ -1,6 +1,6 @@
 function webCam() {
 	(function(){
-		var emotions = ["happy", "sad", "mad", "surprised", "rofl", "confused"];
+		var emotions = ["happy", "sad", "mad", "omg", "rofl", "wat"];
 		var mediaOptions = { audio: false, video: true };
 		var video = document.querySelector("#player");
 		var canvas = document.querySelector("#canvas");
@@ -51,7 +51,7 @@ function webCam() {
 					}
 				});
 			} else {
-				alert('done!');
+				alert('Finished!');
 			}
 		}
 

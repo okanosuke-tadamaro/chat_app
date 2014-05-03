@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   def create
     @chatroom = Chatroom.find_by(name: params[:room_name])
-    emotions = %w(#happy #sad #mad #surprised #rofl #confused)
+    emotions = %w(#happy #sad #mad #omg #rofl #wat)
     emotion = params[:content].scan(/(#\w*)/).flatten.first
     if emotion.nil? || emotions.include?(emotion) == false
       emotion = 'happy'

@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   def self.new_aws_request
     return AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
   end
-  
+
   #Grabbing current user's avatars from S3
   def self.get_avatars(username)
     result = {}
-    emotions = ["happy", "sad", "mad", "surprised", "rofl", "confused"]
+    emotions = ["happy", "sad", "mad", "omg", "rofl", "wat"]
     aws = User.new_aws_request
     bucket = aws.buckets[ENV['S3_BUCKET_NAME']]
 
