@@ -1,6 +1,6 @@
 function webCam() {
 	(function(){
-		var emotions = ["happy", "sad", "mad", "omg", "rofl", "wat"];
+		var emotions = ["happy", "sad", "mad", "omg", "lol", "wat"];
 		var mediaOptions = { audio: false, video: true };
 		var video = document.querySelector("#player");
 		var canvas = document.querySelector("#canvas");

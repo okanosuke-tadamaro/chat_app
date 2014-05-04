@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   #Grabbing current user's avatars from S3
   def self.get_avatars(username)
     result = {}
-    emotions = ["happy", "sad", "mad", "omg", "rofl", "wat"]
+    emotions = ["happy", "sad", "mad", "omg", "lol", "wat"]
     aws = User.new_aws_request
     bucket = aws.buckets[ENV['S3_BUCKET_NAME']]
 

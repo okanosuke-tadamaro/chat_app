@@ -46,9 +46,13 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @avatars = User.get_avatars(current_user.username)
-    @chatroom = Chatroom.find_by(name: params[:name])
-    @messages = @chatroom.messages.order(created_at: :desc)
+    begin
+      @avatars = User.get_avatars(current_user.username)
+      @chatroom = Chatroom.find_by(name: params[:name])
+      @messages = @chatroom.messages.order(created_at: :desc)
+    rescue
+      redirect_to chatrooms_patb
+    end
   end
 
   def get_messages
@@ -78,7 +82,7 @@ class ChatroomsController < ApplicationController
       rankings: ranking_data,
       newMsgs: new_msgs
     }
-    
+
     respond_to do |format|
       format.json { render json: return_data.to_json }
     end

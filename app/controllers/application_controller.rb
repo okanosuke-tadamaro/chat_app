@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in?, :current_user
 
   private
+
   #checking for user signed in
   def signed_in?
     true if session[:oauth_token]
   end
+
   #current user object return
   def current_user
   	if signed_in?
