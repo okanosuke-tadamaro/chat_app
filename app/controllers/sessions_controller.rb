@@ -2,12 +2,18 @@ class SessionsController < ApplicationController
   def index
     # redirect_to "/chatrooms" if signed_in?
   end
+
   #Logging in via Twitter Oauth
   def create
   	auth = request.env["omniauth.auth"]
-    session[:oauth_token] = auth.credentials.token
-    session[:oauth_token_secret] = auth.credentials.secret
-    session[:username] = auth.extra.access_token.params[:screen_name]
+    if auth.provider == "twitter"
+      session[:oauth_token] = auth.credentials.token
+      session[:oauth_token_secret] = auth.credentials.secret
+      session[:username] = auth.extra.access_token.params[:screen_name]
+    elsif auth.provider == "google_oauth2"
+      session[:oauth_token] = auth.credentials.token
+      session[:username] = auth.info.email
+    end
 
     if User.exists?(username: session[:username]) == false
     	User.create(username: session[:username], token: session[:oauth_token])

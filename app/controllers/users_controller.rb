@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :current_user, only: [:create_avatar]
+	before_action :current_user
 
 	#Photo taking
 	def register

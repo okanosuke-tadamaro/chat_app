@@ -3,22 +3,26 @@ class ChatroomsController < ApplicationController
   before_action :current_user
 
   def index
-    @chatroom = Chatroom.new
+    begin
+      @chatroom = Chatroom.new
 
-    #AJAX request for rooms participated in
-    rooms_ids = current_user.messages.pluck(:chatroom_id).uniq.sort!
-    rooms = rooms_ids.map { |id| Chatroom.find(id) }
-    @recent_rooms = {}
-    rooms.each do |room|
-      @recent_rooms[room.name] = room.how_old?
-    end
-    updated_rooms = @recent_rooms.map do |room_name, time_left|
-      new_array = []
-      new_array.push(room_name, time_left)
-    end
+      #AJAX request for rooms participated in
+      rooms_ids = current_user.messages.pluck(:chatroom_id).uniq.sort!
+      rooms = rooms_ids.map { |id| Chatroom.find(id) }
+      @recent_rooms = {}
+      rooms.each do |room|
+        @recent_rooms[room.name] = room.how_old?
+      end
+      updated_rooms = @recent_rooms.map do |room_name, time_left|
+        new_array = []
+        new_array.push(room_name, time_left)
+      end
 
-    #Grabbing current user's Avatars from S3
-    @avatars = User.get_avatars(current_user.username)
+      #Grabbing current user's Avatars from S3
+      @avatars = User.get_avatars(current_user.username)
+    rescue
+      redirect_to register_path
+    end
 
     respond_to do |format|
       format.html { render 'index'}
