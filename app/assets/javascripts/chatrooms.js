@@ -31,6 +31,7 @@ function addMessage(data) {
 
     msgBox.attr('id', data.user).addClass('left');
     msgBox.attr('msg_id', newMsgs[i].msg_id);
+
     if (msgText.indexOf("http") >= 0) {
       arrowBox.append($('<a>').attr('href', msgText).attr('target', '_blank').text(msgText)).appendTo(messageContent);
       if (msgText.indexOf(".gif") >= 0 || msgText.indexOf(".jpg") >= 0 || msgText.indexOf(".png") >= 0) {
@@ -39,6 +40,7 @@ function addMessage(data) {
     } else {
       arrowBox.text(msgText).appendTo(messageContent);
     }
+
     msgBox.append(avatarBox);
     msgBox.append(messageContent);
     chatBox.prepend(msgBox);

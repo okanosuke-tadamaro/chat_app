@@ -4,8 +4,8 @@
 	<% if signed_in? %>
 		<%= link_to "Start Chatting!", chatrooms_path %>
 	<% else %>
-		<span class="left"><%= link_to image_tag('twitter_logo.png'), "/auth/twitter" %></span>
-		<span class="right"><%= link_to image_tag('google_logo.png'), "/auth/google_oauth2" %></span>
+		<%= link_to "Sign in with Twitter", "/auth/twitter" %> ||
+		<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 	<% end %>
 
 	<div class="welcome-logo">
