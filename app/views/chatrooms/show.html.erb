@@ -14,7 +14,7 @@
     <button id="send-button">Send</button>
   </div>
 
-<div class="chat-box">
+  <div class="chat-box">
   <% @messages.each do |msg| %>
     <div class="message-box left" id="<%= msg.user.username %>" msg_id="<%= msg.id %>">
       <div class="message-avatar avatar">
@@ -30,10 +30,9 @@
 
 </div>
 <div class="right_col">
-  <h3>Top Contributors</h3>
+  <h3><i class="fa fa-trophy"></i>Top Contributors</h3>
   <hr>
-  <div class="ranked_users" id="ranking_box">
-  </div>
+  <div class="ranked_users" id="ranking_box"></div>
 </div>
 
 
