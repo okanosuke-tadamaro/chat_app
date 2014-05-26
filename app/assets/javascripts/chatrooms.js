@@ -87,7 +87,8 @@ function ranking(data) {
 }
 
 function grabMessages() {
-  var roomName = $('.room-name').text();
+  // var roomName = $('.room-name').text();
+  var roomName = window.location.pathname.split('/')[2];
   var latestMsgID = $('.message-box').eq(0).attr('msg_id');
   $.ajax({
     url: '/get_messages',

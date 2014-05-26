@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root "sessions#index"
+  get '/how_to' => "sessions#how_to"
   get "/auth/:provider/callback" => "sessions#create"
 
   post "/create_avatar" => "users#create_avatar"

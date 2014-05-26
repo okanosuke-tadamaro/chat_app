@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EmoChat.io</title>
+  <title>emochat</title>
   <link rel="icon" type="image/png" href="http://i.imgur.com/mCtiV8I.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -13,12 +13,12 @@
   <div class="fixed_header">
     <div class="header_content">
       <div class="logo">
-        <h1><%= link_to "emochat.io", root_path %></h1>
+        <h1><%= link_to "emochat", root_path %> <%= "chatroom: " + @chatroom.name if params[:action] == 'show' %></h1>
       </div>
       <ul class="nav">
+        <li><i class="fa fa-info-circle"></i><%= link_to "Users Guide", how_to_path %></li>
         <li><i class="fa fa-user"></i><%= link_to "Account", chatrooms_path %></li>
         <li><i class="fa fa-sign-out"></i><%= link_to "Sign Out", signout_path %></li>
-        <li><i class="fa fa-usd"></i><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
       </ul>
     </div>
   </div>

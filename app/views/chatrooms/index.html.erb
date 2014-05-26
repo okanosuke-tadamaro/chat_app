@@ -1,7 +1,8 @@
 <div class="left_col">
-  <h1>Hey <%= current_user.username %>!</h1>
+  <h3>Hey <span class="username"><%= current_user.username %></span>!</h3>
+  <hr>
   <h4 class="notice"><%= flash[:notice] %></h4>
-  <div class="avatar_box">
+  <div class="avatar_box top-padding">
     <% @avatars.each do |emo, img| %>
     <div class="avatar-label">
       <div class="avatar"><img src="<%= img.read %>" id="<%= current_user.username %>_<%= emo %>"></div>
@@ -13,12 +14,12 @@
 
   <div class="chat-index">
     <div class="form-box left">
-      <h3>Create Chatroom</h3>
+      <h3>Create a Chatroom</h3>
       <%= render "form" %>
     </div>
     <p class="left">OR</p>
     <div class="form-box right">
-      <h3>Search Chatroom</h3>
+      <h3>Enter a Chatroom</h3>
       <%= render "search" %>
     </div>
     <div class="clear"></div>

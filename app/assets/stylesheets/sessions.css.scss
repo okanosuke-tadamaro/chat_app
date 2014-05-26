@@ -1,3 +1,12 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.how-to-wrap {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 5px;
+	padding: 30px;
+	margin-bottom: 40px;
+}
+
+.how-to-block {
+	margin: 30px 0 30px 0;
+	h3 { margin-bottom: 10px; }
+	.important { color: red; }
+}

@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def index
     # redirect_to "/chatrooms" if signed_in?
   end
+  
   #Logging in via Twitter Oauth
   def create
   	auth = request.env["omniauth.auth"]
@@ -21,6 +22,10 @@ class SessionsController < ApplicationController
     session[:username] = nil
     session[:oauth_token] = nil
     redirect_to root_path
+  end
+
+  def how_to
+
   end
 
 end
