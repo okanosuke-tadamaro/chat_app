@@ -55,7 +55,7 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.find_by(name: params[:name])
       @messages = @chatroom.messages.order(created_at: :desc)
     rescue
-      redirect_to chatrooms_patb
+      redirect_to chatrooms_path
     end
   end
 
